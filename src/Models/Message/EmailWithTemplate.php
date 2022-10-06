@@ -37,13 +37,13 @@ final class EmailWithTemplate
         return $this;
     }
 
-    public function setTemplateId(?int $templateId): EmailWithTemplate
+    public function setTemplateId(int $templateId): EmailWithTemplate
     {
         $this->templateId = $templateId;
         return $this;
     }
 
-    public function setTemplateAlias(?string $templateAlias): EmailWithTemplate
+    public function setTemplateAlias(string $templateAlias): EmailWithTemplate
     {
         $this->templateAlias = $templateAlias;
         return $this;
@@ -80,7 +80,7 @@ final class EmailWithTemplate
         return $this;
     }
 
-    public function setTag(string $tag): EmailWithTemplate
+    public function addTag(string $tag): EmailWithTemplate
     {
         $this->tag = $tag;
         return $this;
@@ -98,7 +98,7 @@ final class EmailWithTemplate
         return $this;
     }
 
-    public function setTrackOpens(bool $trackOpens): EmailWithTemplate
+    public function setOpenTracking(bool $trackOpens): EmailWithTemplate
     {
         $this->trackOpens = $trackOpens;
         return $this;
