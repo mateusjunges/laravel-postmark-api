@@ -9,7 +9,7 @@ use Ixdf\Postmark\Contracts\Hydrator;
 use Ixdf\Postmark\Models\Template\Response\TemplateCollection;
 use Ixdf\Postmark\Models\Template\Response\TemplateDeletedResponse;
 use Ixdf\Postmark\Models\Template\Response\TemplateResponse;
-use Ixdf\Postmark\Models\Template\TemplateModel;
+use Ixdf\Postmark\Models\Template\Template;
 
 final class Template
 {
@@ -18,13 +18,13 @@ final class Template
         private readonly Hydrator $hydrator
     ) {}
 
-    public function create(TemplateModel $template): ApiResponse
+    public function create(Template $template): ApiResponse
     {
         return $this->hydrator->hydrate(
             $this->client->request('POST', '/templates', [
                 RequestOptions::BODY => $template->toJson(),
             ]),
-            TemplateResponse::class
+            Template::class
         );
     }
 
