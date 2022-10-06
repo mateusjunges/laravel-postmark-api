@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Api\Message;
+namespace Ixdf\Postmark\Api;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;

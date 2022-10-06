@@ -5,7 +5,8 @@ namespace Ixdf\Postmark;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
-use Ixdf\Postmark\Api\Message\Message;
+use Ixdf\Postmark\Api\Message;
+use Ixdf\Postmark\Api\Template;
 use Ixdf\Postmark\Contracts\Hydrator;
 use Ixdf\Postmark\Hydrator\ModelHydrator;
 
@@ -30,7 +31,9 @@ final class Postmark
             RequestOptions::VERIFY => self::$VERIFY_SSL,
             RequestOptions::TIMEOUT => $timeout,
             RequestOptions::HEADERS => [
-                self::AUTH_HEADER => $apiToken
+                self::AUTH_HEADER => $apiToken,
+                'Content-Type' => 'application/json',
+                'Accept' => 'application/json',
             ]
         ]);
 
@@ -47,5 +50,10 @@ final class Postmark
     public function messages(): Message
     {
         return new Message($this->client, $this->hydrator);
+    }
+
+    public function templates(): Template
+    {
+        return new Template($this->client, $this->hydrator);
     }
 }
