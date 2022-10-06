@@ -8,6 +8,9 @@ final class BatchWithTemplate
 {
     private const MAX_RECIPIENTS = 500;
 
+    private ?string $templateAlias = null;
+    private ?int $templateId = null;
+
     /** @var array<int, \Ixdf\Postmark\Models\Message\EmailWithTemplate> $items */
     private array $items = [];
 
@@ -22,11 +25,33 @@ final class BatchWithTemplate
         return $this;
     }
 
+    public function setTemplateId(int $templateId): self
+    {
+        $this->templateId = $templateId;
+
+        return $this;
+    }
+
+    public function setTemplateAlias(string $templateAlias): self
+    {
+        $this->templateAlias = $templateAlias;
+
+        return $this;
+    }
+
     public function toArray(): array
     {
         $response = [];
 
         foreach ($this->items as $email) {
+            if ($email->shouldSetTemplateIdOrAlias()) {
+                if ($this->templateId !== null) {
+                    $email->setTemplateId($this->templateId);
+                } elseif ($this->templateAlias !== null) {
+                    $email->setTemplateAlias($this->templateAlias);
+                }
+            }
+
             $response[] = $email->toArray();
         }
 

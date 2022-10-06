@@ -6,6 +6,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
 use Ixdf\Postmark\Contracts\ApiResponse;
 use Ixdf\Postmark\Contracts\Hydrator;
+use Ixdf\Postmark\Models\Template\Response\SingleTemplateResponse;
 use Ixdf\Postmark\Models\Template\Response\TemplateCollection;
 use Ixdf\Postmark\Models\Template\Response\TemplateDeletedResponse;
 use Ixdf\Postmark\Models\Template\Response\TemplateResponse;
@@ -25,6 +26,14 @@ final class Template
                 RequestOptions::BODY => $template->toJson(),
             ]),
             TemplateResponse::class
+        );
+    }
+
+    public function find(string $templateIdOrAlias): ApiResponse
+    {
+        return $this->hydrator->hydrate(
+            $this->client->request('GET', "/templates/$templateIdOrAlias"),
+            SingleTemplateResponse::class
         );
     }
 

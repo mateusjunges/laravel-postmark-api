@@ -129,6 +129,11 @@ final class EmailWithTemplate
         return $this;
     }
 
+    public function shouldSetTemplateIdOrAlias(): bool
+    {
+        return $this->templateAlias === null && $this->templateId === null;
+    }
+
     public function toArray(): array
     {
         return collect([

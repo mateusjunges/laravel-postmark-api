@@ -7,9 +7,7 @@ final class Template
     private string $name;
     private string $alias = "";
     private string $htmlBody = "";
-    private string $htmlBodyAfterReplacements = "";
     private string $textBody = "";
-    private string $textBodyAfterReplacements = "";
     private string $subject;
     private string $templateType = "";
     private string $layoutTemplate = "";
@@ -81,19 +79,9 @@ final class Template
         return $this->htmlBody;
     }
 
-    public function getHtmlBodyWithPostmarkPlaceholders(): string
-    {
-        return $this->htmlBodyAfterReplacements;
-    }
-
     public function getTextBody(): string
     {
         return $this->textBody;
-    }
-
-    public function getTextBodyWithPostmarkPlaceholders(): string
-    {
-        return $this->textBodyAfterReplacements;
     }
 
     public function getSubject(): string
