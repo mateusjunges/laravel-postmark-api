@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Ixdf\Postmark\Models\Message;
 
 use Illuminate\Support\Collection;
 use Ixdf\Postmark\Exceptions\TooManyRecipients;
 
-class BatchCollection extends Collection
+final class BatchCollection extends Collection
 {
     private const MAX_RECIPIENTS = 500;
 

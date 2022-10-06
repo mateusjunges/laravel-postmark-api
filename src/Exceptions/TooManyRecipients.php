@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Ixdf\Postmark\Exceptions;
 
 use Ixdf\Postmark\Contracts\Exception;
 use RuntimeException;
 
-class TooManyRecipients extends RuntimeException implements Exception
+final class TooManyRecipients extends RuntimeException implements Exception
 {
 
 }

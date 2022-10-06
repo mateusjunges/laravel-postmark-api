@@ -5,7 +5,6 @@ namespace Ixdf\Postmark;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
-use http\Env\Request;
 use Ixdf\Postmark\Api\Message\Message;
 use Ixdf\Postmark\Contracts\Hydrator;
 use Ixdf\Postmark\Hydrator\ModelHydrator;
@@ -17,7 +16,6 @@ final class Postmark
     public static $VERIFY_SSL = true;
 
     private string $apiToken;
-    private string $baseUrl;
 
     public function __construct(
         private ClientInterface $client,

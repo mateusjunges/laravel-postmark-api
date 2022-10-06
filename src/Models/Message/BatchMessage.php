@@ -1,10 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Ixdf\Postmark\Models\Message;
 
 use Ixdf\Postmark\Enums\TrackLinksEnum;
 
-class BatchMessage
+final class BatchMessage
 {
     private string $from; // required
     private string $to; // required

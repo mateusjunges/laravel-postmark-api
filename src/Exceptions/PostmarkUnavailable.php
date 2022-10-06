@@ -1,10 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Ixdf\Postmark\Exceptions;
 
 use Ixdf\Postmark\Contracts\Exception;
 
-class PostmarkUnavailable extends \RuntimeException implements Exception
+final class PostmarkUnavailable extends \RuntimeException implements Exception
 {
 
 }

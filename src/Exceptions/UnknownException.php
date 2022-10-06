@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Ixdf\Postmark\Exceptions;
 
 use Ixdf\Postmark\Contracts\Exception;
 use RuntimeException;
 
-class UnknownException extends RuntimeException implements Exception
+final class UnknownException extends RuntimeException implements Exception
 {
 
 }

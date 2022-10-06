@@ -7,7 +7,7 @@ use Ixdf\Postmark\Contracts\Hydrator;
 use Ixdf\Postmark\Exceptions\HydrationException;
 use Psr\Http\Message\ResponseInterface;
 
-class ModelHydrator implements Hydrator
+final class ModelHydrator implements Hydrator
 {
     public function hydrate(ResponseInterface $response, string $class)
     {
