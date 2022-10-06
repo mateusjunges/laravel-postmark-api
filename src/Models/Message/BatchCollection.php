@@ -1,6 +1,6 @@
 <?php
 
-namespace Ixdf\Postmark\Api\Message;
+namespace Ixdf\Postmark\Models\Message;
 
 use App\Exceptions\Notification\BatchMailer\TooManyRecipients;
 use Illuminate\Support\Collection;
@@ -9,7 +9,7 @@ class BatchCollection extends Collection
 {
     private const MAX_RECIPIENTS = 500;
 
-    /** @var array<int, \Ixdf\Postmark\Api\Message\BatchMessage> $items */
+    /** @var array<int, \Ixdf\Postmark\Models\Message\BatchMessage> $items */
     protected $items = [];
 
     /**
@@ -28,7 +28,7 @@ class BatchCollection extends Collection
     {
         $items = [];
 
-        /** @var \Ixdf\Postmark\Api\Message\BatchMessage $message */
+        /** @var \Ixdf\Postmark\Models\Message\BatchMessage $message */
         foreach ($this->toArray() as $message) {
             $items[] = $message->toArray();
         }
