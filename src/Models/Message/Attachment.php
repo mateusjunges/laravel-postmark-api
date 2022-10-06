@@ -9,8 +9,8 @@ final class Attachment implements Arrayable
     public function __construct(
         private readonly string $name,
         private readonly string $base64EncodedData,
-        private string $mimeType = 'application/octet-stream',
-        private ?string $contentId = null
+        private readonly string $mimeType = 'application/octet-stream',
+        private readonly ?string $contentId = null
     ) {}
 
     public static function fromRawData(string $data, string $attachmentName, string $mimeType = 'application/octet-stream', string $contentId = null): self
