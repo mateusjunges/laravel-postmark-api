@@ -112,9 +112,9 @@ class BatchMessage
         return $this;
     }
 
-    public function setAttachments(array $attachments): BatchMessage
+    public function addAttachment(Attachment $attachment): BatchMessage
     {
-        $this->attachments = $attachments;
+        $this->attachments[] = $attachment->toArray();
         return $this;
     }
 
@@ -173,7 +173,7 @@ class BatchMessage
         return $this->headers;
     }
 
-    public function isTrackOpens(): bool
+    public function isTrackingOpens(): bool
     {
         return $this->trackOpens;
     }
