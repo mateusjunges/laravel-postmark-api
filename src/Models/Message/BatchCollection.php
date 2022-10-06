@@ -2,8 +2,8 @@
 
 namespace Ixdf\Postmark\Models\Message;
 
-use App\Exceptions\Notification\BatchMailer\TooManyRecipients;
 use Illuminate\Support\Collection;
+use Ixdf\Postmark\Exceptions\TooManyRecipients;
 
 class BatchCollection extends Collection
 {
@@ -13,7 +13,7 @@ class BatchCollection extends Collection
     protected $items = [];
 
     /**
-     * @throws \App\Exceptions\Notification\BatchMailer\TooManyRecipients
+     * @throws \Ixdf\Postmark\Exceptions\TooManyRecipients
      */
     public function push(...$values): self
     {
