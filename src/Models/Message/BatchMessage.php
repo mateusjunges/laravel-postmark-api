@@ -17,7 +17,7 @@ final class BatchMessage
         $model = new self();
         $model->errorCode = (int) $data['ErrorCode'] ?? 0;
         $model->message = $data['Message'] ?? '';
-        $model->messageId = $data['MessageId'] ?? '';
+        $model->messageId = $data['MessageID'] ?? '';
         $model->submittedAt = $data['SubmittedAt'] ?? '';
         $model->to = $data['To'] ?? '';
 
