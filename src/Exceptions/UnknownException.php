@@ -2,9 +2,10 @@
 
 namespace Ixdf\Postmark\Exceptions;
 
-use Exception;
+use Ixdf\Postmark\Contracts\Exception;
+use RuntimeException;
 
-class UnknownException extends Exception
+class UnknownException extends RuntimeException implements Exception
 {
 
 }

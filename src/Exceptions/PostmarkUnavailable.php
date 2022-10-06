@@ -2,9 +2,9 @@
 
 namespace Ixdf\Postmark\Exceptions;
 
-use Exception;
+use Ixdf\Postmark\Contracts\Exception;
 
-class PostmarkUnavailable extends Exception
+class PostmarkUnavailable extends \RuntimeException implements Exception
 {
 
 }

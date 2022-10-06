@@ -2,9 +2,10 @@
 
 namespace Ixdf\Postmark\Exceptions;
 
-use Exception;
+use Ixdf\Postmark\Contracts\Exception;
+use RuntimeException;
 
-class ServerErrorException extends Exception
+class ServerErrorException extends RuntimeException implements Exception
 {
 
 }

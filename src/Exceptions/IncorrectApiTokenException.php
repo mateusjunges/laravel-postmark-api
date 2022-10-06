@@ -2,9 +2,10 @@
 
 namespace Ixdf\Postmark\Exceptions;
 
-use Exception;
+use InvalidArgumentException;
+use Ixdf\Postmark\Contracts\Exception;
 
-class IncorrectApiTokenException extends Exception
+class IncorrectApiTokenException extends InvalidArgumentException implements Exception
 {
 
 }

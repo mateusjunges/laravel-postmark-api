@@ -2,9 +2,10 @@
 
 namespace Ixdf\Postmark\Exceptions;
 
-use Exception;
+use Ixdf\Postmark\Contracts\Exception;
+use RuntimeException;
 
-class TooManyRecipients extends Exception
+class TooManyRecipients extends RuntimeException implements Exception
 {
 
 }
