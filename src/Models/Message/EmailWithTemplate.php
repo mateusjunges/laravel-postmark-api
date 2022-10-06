@@ -5,7 +5,7 @@ namespace Ixdf\Postmark\Models\Message;
 use Ixdf\Postmark\Enums\TrackLinksEnum;
 use Ixdf\Postmark\Models\Template\TemplateModel;
 
-final class SendWithTemplate
+final class EmailWithTemplate
 {
     private string $from;
     private ?int $templateId = null;
@@ -24,7 +24,7 @@ final class SendWithTemplate
     private array $metadata = [];
     private string $messageStream = "outbound";
 
-    public function setFromAddress(string $from, array $attributes = []): SendWithTemplate
+    public function setFromAddress(string $from, array $attributes = []): EmailWithTemplate
     {
         $fullName = $from;
 
@@ -37,93 +37,93 @@ final class SendWithTemplate
         return $this;
     }
 
-    public function setTemplateId(?int $templateId): SendWithTemplate
+    public function setTemplateId(?int $templateId): EmailWithTemplate
     {
         $this->templateId = $templateId;
         return $this;
     }
 
-    public function setTemplateAlias(?string $templateAlias): SendWithTemplate
+    public function setTemplateAlias(?string $templateAlias): EmailWithTemplate
     {
         $this->templateAlias = $templateAlias;
         return $this;
     }
 
-    public function setTemplateModel(TemplateModel $model): SendWithTemplate
+    public function setTemplateModel(TemplateModel $model): EmailWithTemplate
     {
         $this->model = $model;
         return $this;
     }
 
-    public function setInlineCss(bool $inlineCss): SendWithTemplate
+    public function setInlineCss(bool $inlineCss): EmailWithTemplate
     {
         $this->inlineCss = $inlineCss;
         return $this;
     }
 
-    public function addToAddress(string $to): SendWithTemplate
+    public function addToAddress(string $to): EmailWithTemplate
     {
         $this->to[] = $to;
 
         return $this;
     }
 
-    public function addCcAddress(string $cc): SendWithTemplate
+    public function addCcAddress(string $cc): EmailWithTemplate
     {
         $this->cc[] = $cc;
         return $this;
     }
 
-    public function addBccAddress(string $bcc): SendWithTemplate
+    public function addBccAddress(string $bcc): EmailWithTemplate
     {
         $this->bcc[] = $bcc;
         return $this;
     }
 
-    public function setTag(string $tag): SendWithTemplate
+    public function setTag(string $tag): EmailWithTemplate
     {
         $this->tag = $tag;
         return $this;
     }
 
-    public function setReplyTo(string $replyTo): SendWithTemplate
+    public function setReplyTo(string $replyTo): EmailWithTemplate
     {
         $this->replyTo = $replyTo;
         return $this;
     }
 
-    public function setHeaders(array $headers): SendWithTemplate
+    public function setHeaders(array $headers): EmailWithTemplate
     {
         $this->headers = $headers;
         return $this;
     }
 
-    public function setTrackOpens(bool $trackOpens): SendWithTemplate
+    public function setTrackOpens(bool $trackOpens): EmailWithTemplate
     {
         $this->trackOpens = $trackOpens;
         return $this;
     }
 
-    public function setTrackLinks(TrackLinksEnum $trackLinks): SendWithTemplate
+    public function setTrackLinks(TrackLinksEnum $trackLinks): EmailWithTemplate
     {
         $this->trackLinks = $trackLinks;
         return $this;
     }
 
-    public function addAttachment(Attachment $attachment): SendWithTemplate
+    public function addAttachment(Attachment $attachment): EmailWithTemplate
     {
         $this->attachments[] = $attachment->toArray();
 
         return $this;
     }
 
-    public function addMetadata(string $key, string | int | float $value): SendWithTemplate
+    public function addMetadata(string $key, string | int | float $value): EmailWithTemplate
     {
         $this->metadata[$key] = $value;
         return $this;
     }
 
-    public function setMessageStream(string $messageStream): SendWithTemplate
+    public function setMessageStream(string $messageStream): EmailWithTemplate
     {
         $this->messageStream = $messageStream;
         return $this;

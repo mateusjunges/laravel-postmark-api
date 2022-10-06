@@ -6,9 +6,9 @@ use Ixdf\Postmark\Contracts\ApiResponse;
 
 final class SendWithTemplateResponse implements ApiResponse
 {
-    private string $to;
-    private string $submittedAt;
-    private string $messageId;
+    private ?string $to = null;
+    private ?string $submittedAt = null;
+    private ?string $messageId = null;
     private int $errorCode = 0;
     private string $message;
 
