@@ -13,7 +13,7 @@ final class SendBatchEmailResponse implements ApiResponse
         $model = new self();
 
         foreach ($data as $message) {
-            $model->messages[] = BatchMessage::create($message);
+            $model->messages[] = MessageResponse::create($message);
         }
 
         return $model;

@@ -4,7 +4,7 @@ namespace Ixdf\Postmark\Models\Message;
 
 use Ixdf\Postmark\Enums\TrackLinksEnum;
 
-final class BatchMessage
+final class Message
 {
     private string $from; // required
     private string $to; // required
@@ -22,7 +22,7 @@ final class BatchMessage
     private string $messageStream = 'broadcast'; // required
     private array $attachments = []; // optional
 
-    public function setFromAddress(string $from, array $variables = []): BatchMessage
+    public function setFromAddress(string $from, array $variables = []): Message
     {
         if (isset($variables['full_name'])) {
             $this->from = $variables['full_name'] . " <$from>";
@@ -33,86 +33,86 @@ final class BatchMessage
         return $this;
     }
 
-    public function setToAddress(string $to): BatchMessage
+    public function setToAddress(string $to): Message
     {
         $this->to = $to;
         return $this;
     }
 
-    public function setSubject(string $subject): BatchMessage
+    public function setSubject(string $subject): Message
     {
         $this->subject = $subject;
         return $this;
     }
 
-    public function setHtmlBody(string $htmlBody): BatchMessage
+    public function setHtmlBody(string $htmlBody): Message
     {
         $this->htmlBody = $htmlBody;
         return $this;
     }
 
-    public function setTextBody(string $textBody): BatchMessage
+    public function setTextBody(string $textBody): Message
     {
         $this->textBody = $textBody;
         return $this;
     }
 
-    public function setCc(array $cc): BatchMessage
+    public function setCc(array $cc): Message
     {
         $this->cc = $cc;
         return $this;
     }
 
-    public function setBcc(array $bcc): BatchMessage
+    public function setBcc(array $bcc): Message
     {
         $this->bcc = $bcc;
         return $this;
     }
 
-    public function setMetadata(array $metadata): BatchMessage
+    public function setMetadata(array $metadata): Message
     {
         $this->metadata = $metadata;
         return $this;
     }
 
-    public function addTag(string $tag): BatchMessage
+    public function addTag(string $tag): Message
     {
         $this->tag = $tag;
 
         return $this;
     }
 
-    public function setReplyTo(string $replyTo): BatchMessage
+    public function setReplyTo(string $replyTo): Message
     {
         $this->replyTo = $replyTo;
         return $this;
     }
 
-    public function setHeaders(array $headers): BatchMessage
+    public function setHeaders(array $headers): Message
     {
         $this->headers = $headers;
         return $this;
     }
 
-    public function setOpenTracking(bool $trackOpens): BatchMessage
+    public function setOpenTracking(bool $trackOpens): Message
     {
         $this->trackOpens = $trackOpens;
         return $this;
     }
 
-    public function setTrackLinks(TrackLinksEnum $trackLinks): BatchMessage
+    public function setTrackLinks(TrackLinksEnum $trackLinks): Message
     {
         $this->trackLinks = $trackLinks;
         return $this;
     }
 
-    public function setMessageStream(string $messageStream): BatchMessage
+    public function setMessageStream(string $messageStream): Message
     {
         $this->messageStream = $messageStream;
         return $this;
     }
 
-    public function addAttachment(Attachment $attachment): BatchMessage
+    public function addAttachment(Attachment $attachment): Message
     {
         $this->attachments[] = $attachment->toArray();
         return $this;
@@ -233,5 +233,10 @@ final class BatchMessage
         }
 
         return collect($array)->reject(fn ($item) => empty($item))->all();
+    }
+
+    public function toJson(): string
+    {
+        return json_encode($this->toArray());
     }
 }

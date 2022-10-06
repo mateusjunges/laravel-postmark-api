@@ -2,33 +2,38 @@
 
 namespace Ixdf\Postmark\Models\Message;
 
-use Illuminate\Support\Collection;
 use Ixdf\Postmark\Exceptions\TooManyRecipients;
 
-final class BatchCollection extends Collection
+final class Batch
 {
     private const MAX_RECIPIENTS = 500;
 
-    /** @var array<int, \Ixdf\Postmark\Models\Message\BatchMessage> $items */
-    protected $items = [];
+    /** @var array<int, \Ixdf\Postmark\Models\Message\Message> $items */
+    private array $items = [];
 
     /**
      * @throws \Ixdf\Postmark\Exceptions\TooManyRecipients
      */
-    public function push(...$values): self
+    public function push(Message $message): self
     {
         if (count($this->items) >= self::MAX_RECIPIENTS) {
             throw new TooManyRecipients();
         }
 
-        return parent::push($values);
+        $this->items[] = $message;
+
+        return $this;
     }
 
-    public function toJson($options = 0): string
+    public function toArray(): array
+    {
+        return $this->items;
+    }
+
+    public function toJson(): string
     {
         $items = [];
 
-        /** @var \Ixdf\Postmark\Models\Message\BatchMessage $message */
         foreach ($this->toArray() as $message) {
             $items[] = $message->toArray();
         }

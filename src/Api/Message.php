@@ -10,8 +10,10 @@ use Ixdf\Postmark\Exceptions\IncorrectApiTokenException;
 use Ixdf\Postmark\Exceptions\PostmarkUnavailable;
 use Ixdf\Postmark\Exceptions\ServerErrorException;
 use Ixdf\Postmark\Exceptions\UnknownException;
-use Ixdf\Postmark\Models\Message\BatchCollection;
+use Ixdf\Postmark\Models\Message\Batch;
 use Ixdf\Postmark\Models\Message\BatchWithTemplate;
+use Ixdf\Postmark\Models\Message\Message as MessageRequest;
+use Ixdf\Postmark\Models\Message\Response\MessageResponse;
 use Ixdf\Postmark\Models\Message\Response\SendBatchEmailResponse;
 use Ixdf\Postmark\Models\Message\Response\SendBatchWithTemplateResponse;
 use Ixdf\Postmark\Models\Message\Response\SendWithTemplateResponse;
@@ -25,6 +27,16 @@ final class Message
         private Hydrator $hydrator,
     ) {}
 
+    public function send(MessageRequest $message): ApiResponse
+    {
+        return $this->parseResponse(
+            $this->client->request('POST', '/email', [
+                RequestOptions::BODY => $message->toJson()
+            ]),
+            MessageResponse::class
+        );
+    }
+
     /**
      * @throws \Ixdf\Postmark\Exceptions\IncorrectApiTokenException
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -32,7 +44,7 @@ final class Message
      * @throws \Ixdf\Postmark\Exceptions\PostmarkUnavailable
      * @throws \Ixdf\Postmark\Exceptions\UnknownException
      */
-    public function sendBatch(BatchCollection $batch)
+    public function sendBatch(Batch $batch): ApiResponse
     {
         return $this->parseResponse(
             $this->client->request('POST', '/email/batch', [

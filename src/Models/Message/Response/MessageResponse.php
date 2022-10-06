@@ -2,7 +2,9 @@
 
 namespace Ixdf\Postmark\Models\Message\Response;
 
-final class BatchMessage
+use Ixdf\Postmark\Contracts\ApiResponse;
+
+final class MessageResponse implements ApiResponse
 {
     private int $errorCode = 0;
     private string $message;

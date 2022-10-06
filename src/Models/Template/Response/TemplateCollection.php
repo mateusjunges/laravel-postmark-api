@@ -2,13 +2,12 @@
 
 namespace Ixdf\Postmark\Models\Template\Response;
 
-use Illuminate\Support\Collection;
 use Ixdf\Postmark\Contracts\ApiResponse;
 
-class TemplateCollection extends Collection implements ApiResponse
+class TemplateCollection implements ApiResponse
 {
     /** @var array<int, \Ixdf\Postmark\Models\Template\Response\TemplateResponse> $items */
-    protected $items = [];
+    protected array $items = [];
 
     public static function create(array $data): self
     {
@@ -19,5 +18,17 @@ class TemplateCollection extends Collection implements ApiResponse
         }
 
         return $collection;
+    }
+
+    public function push(TemplateResponse $templateResponse): self
+    {
+        $this->items[] = $templateResponse;
+
+        return $this;
+    }
+
+    public function toArray(): array
+    {
+        return $this->items;
     }
 }
