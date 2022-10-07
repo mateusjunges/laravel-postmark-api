@@ -2,10 +2,13 @@
 
 namespace Ixdf\Postmark\Models\Message;
 
+use Ixdf\Postmark\Concerns\InteractWithBatches;
 use Ixdf\Postmark\Exceptions\TooManyRecipients;
 
 final class Batch
 {
+    use InteractWithBatches;
+
     private const MAX_RECIPIENTS = 500;
 
     /** @var array<int, \Ixdf\Postmark\Models\Message\Message> $items */
