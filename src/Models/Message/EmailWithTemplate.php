@@ -160,4 +160,84 @@ final class EmailWithTemplate
     {
         return json_encode($this->toArray());
     }
+
+    public function getFrom(): string
+    {
+        return $this->from;
+    }
+
+    public function getTemplateId(): ?int
+    {
+        return $this->templateId;
+    }
+
+    public function getTemplateAlias(): ?string
+    {
+        return $this->templateAlias;
+    }
+
+    public function getModel(): TemplateModel
+    {
+        return $this->model;
+    }
+
+    public function isInlineCss(): bool
+    {
+        return $this->inlineCss;
+    }
+
+    public function getTo(): array
+    {
+        return $this->to;
+    }
+
+    public function getCc(): array
+    {
+        return $this->cc;
+    }
+
+    public function getBcc(): array
+    {
+        return $this->bcc;
+    }
+
+    public function getTag(): string
+    {
+        return $this->tag;
+    }
+
+    public function getReplyTo(): string
+    {
+        return $this->replyTo;
+    }
+
+    public function getHeaders(): array
+    {
+        return $this->headers;
+    }
+
+    public function isTrackOpens(): bool
+    {
+        return $this->trackOpens;
+    }
+
+    public function getTrackLinks(): TrackLinksEnum
+    {
+        return $this->trackLinks;
+    }
+
+    public function getAttachments(): array
+    {
+        return $this->attachments;
+    }
+
+    public function getMetadata(): array
+    {
+        return $this->metadata;
+    }
+
+    public function getMessageStream(): string
+    {
+        return $this->messageStream;
+    }
 }
