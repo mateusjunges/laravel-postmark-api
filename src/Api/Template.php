@@ -6,13 +6,14 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
 use Ixdf\Postmark\Contracts\ApiResponse;
 use Ixdf\Postmark\Contracts\Hydrator;
+use Ixdf\Postmark\Contracts\TemplateApi;
 use Ixdf\Postmark\Models\Template\Response\SingleTemplateResponse;
 use Ixdf\Postmark\Models\Template\Response\TemplateCollection;
 use Ixdf\Postmark\Models\Template\Response\TemplateDeletedResponse;
 use Ixdf\Postmark\Models\Template\Response\TemplateResponse;
 use Ixdf\Postmark\Models\Template\Template as TemplateRequest;
 
-final class Template
+final class Template implements TemplateApi
 {
     public function __construct(
         private readonly ClientInterface $client,
