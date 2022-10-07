@@ -6,6 +6,7 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
 use Ixdf\Postmark\Contracts\ApiResponse;
 use Ixdf\Postmark\Contracts\Hydrator;
+use Ixdf\Postmark\Contracts\MessageApi;
 use Ixdf\Postmark\Exceptions\IncorrectApiTokenException;
 use Ixdf\Postmark\Exceptions\PostmarkUnavailable;
 use Ixdf\Postmark\Exceptions\ServerErrorException;
@@ -20,7 +21,7 @@ use Ixdf\Postmark\Models\Message\Response\SendWithTemplateResponse;
 use Ixdf\Postmark\Models\Message\EmailWithTemplate;
 use Psr\Http\Message\ResponseInterface;
 
-final class Message
+final class Message implements MessageApi
 {
     public function __construct(
         private ClientInterface $client,
