@@ -85,6 +85,6 @@ final class PostmarkFake implements PostmarkService
 
         $callback = $callback ?: fn () => true;
 
-        return collect($sent)->filter(fn ($message) => $callback(dd($message)));
+        return collect($sent)->filter(fn ($message) => $callback($message));
     }
 }
