@@ -134,6 +134,81 @@ final class Message
         return $response;
     }
 
+    public function getToAddress(): string
+    {
+        return $this->to;
+    }
+
+    public function getFrom(): string
+    {
+        return $this->from;
+    }
+
+    public function getSubject(): string
+    {
+        return $this->subject;
+    }
+
+    public function getHtmlBody(): string
+    {
+        return $this->htmlBody;
+    }
+
+    public function getTextBody(): string
+    {
+        return $this->textBody;
+    }
+
+    public function getCc(): array
+    {
+        return $this->cc;
+    }
+
+    public function getBcc(): array
+    {
+        return $this->bcc;
+    }
+
+    public function getMetadata(): array
+    {
+        return $this->metadata;
+    }
+
+    public function getTag(): string
+    {
+        return $this->tag;
+    }
+
+    public function getReplyTo(): string
+    {
+        return $this->replyTo;
+    }
+
+    public function getHeaders(): array
+    {
+        return $this->headers;
+    }
+
+    public function isTrackOpens(): bool
+    {
+        return $this->trackOpens;
+    }
+
+    public function getTrackLinks(): ?TrackLinksEnum
+    {
+        return $this->trackLinks;
+    }
+
+    public function getMessageStream(): string
+    {
+        return $this->messageStream;
+    }
+
+    public function getAttachments(): array
+    {
+        return $this->attachments;
+    }
+
     public function toArray(): array
     {
         $array = [
