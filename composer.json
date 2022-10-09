@@ -8,6 +8,11 @@
             "Ixdf\\Postmark\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Ixdf\\Postmark\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "mateusjunges",

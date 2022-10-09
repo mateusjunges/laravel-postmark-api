@@ -2,7 +2,10 @@
 
 namespace Ixdf\Postmark\Models\Template;
 
-final class TemplateModel
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
+
+final class TemplateModel implements Arrayable, Jsonable
 {
     private array $model = [];
 
@@ -23,7 +26,7 @@ final class TemplateModel
         return $this->model;
     }
 
-    public function toJson(): string
+    public function toJson($options = 0): string
     {
         return json_encode($this->model);
     }

@@ -22,10 +22,10 @@ final class Message
     private string $messageStream = 'broadcast'; // required
     private array $attachments = []; // optional
 
-    public function setFromAddress(string $from, array $variables = []): Message
+    public function setFromAddress(string $from, array $options = []): Message
     {
-        if (isset($variables['full_name'])) {
-            $this->from = $variables['full_name'] . " <$from>";
+        if (isset($options['full_name'])) {
+            $this->from = $options['full_name'] . " <$from>";
         } else {
             $this->from = "$from <$from>";
         }

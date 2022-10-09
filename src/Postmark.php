@@ -11,11 +11,9 @@ use Ixdf\Postmark\Contracts\TemplateApi;
 
 final class Postmark implements PostmarkService
 {
-    private const AUTH_HEADER = 'X-Postmark-Server-Token';
-
     public function __construct(
-        private ClientInterface $client,
-        private Hydrator $hydrator
+        private readonly ClientInterface $client,
+        private readonly Hydrator $hydrator
     ) {
     }
 

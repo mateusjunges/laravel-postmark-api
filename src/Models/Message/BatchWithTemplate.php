@@ -2,10 +2,12 @@
 
 namespace Ixdf\Postmark\Models\Message;
 
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
 use Ixdf\Postmark\Concerns\InteractWithBatches;
 use Ixdf\Postmark\Exceptions\TooManyRecipients;
 
-final class BatchWithTemplate
+final class BatchWithTemplate implements Arrayable, Jsonable
 {
     use InteractWithBatches;
 

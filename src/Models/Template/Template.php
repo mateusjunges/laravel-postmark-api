@@ -2,7 +2,10 @@
 
 namespace Ixdf\Postmark\Models\Template;
 
-final class Template
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
+
+final class Template implements Arrayable, Jsonable
 {
     private string $name;
     private string $alias = "";
@@ -112,7 +115,7 @@ final class Template
         ])->reject(fn (string $value): bool => empty($value))->all();
     }
 
-    public function toJson(): string
+    public function toJson($options = 0): string
     {
         return json_encode($this->toArray());
     }

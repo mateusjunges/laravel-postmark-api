@@ -2,9 +2,10 @@
 
 namespace Ixdf\Postmark\Models\Template\Response;
 
+use Illuminate\Contracts\Support\Arrayable;
 use Ixdf\Postmark\Contracts\ApiResponse;
 
-class TemplateCollection implements ApiResponse
+class TemplateCollectionResponse implements ApiResponse, Arrayable
 {
     /** @var array<int, \Ixdf\Postmark\Models\Template\Response\TemplateResponse> $items */
     protected array $items = [];

@@ -2,10 +2,12 @@
 
 namespace Ixdf\Postmark\Models\Message;
 
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
 use Ixdf\Postmark\Concerns\InteractWithBatches;
 use Ixdf\Postmark\Exceptions\TooManyRecipients;
 
-final class Batch
+final class Batch implements Arrayable, Jsonable
 {
     use InteractWithBatches;
 
@@ -33,7 +35,7 @@ final class Batch
         return $this->items;
     }
 
-    public function toJson(): string
+    public function toJson($options = 0): string
     {
         $items = [];
 

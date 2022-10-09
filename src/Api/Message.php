@@ -24,10 +24,15 @@ use Psr\Http\Message\ResponseInterface;
 final class Message implements MessageApi
 {
     public function __construct(
-        private ClientInterface $client,
-        private Hydrator $hydrator,
+        private readonly ClientInterface $client,
+        private readonly Hydrator $hydrator,
     ) {}
 
+    /**
+     * Send a given message.
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function send(MessageRequest $message): ApiResponse
     {
         return $this->parseResponse(
@@ -39,6 +44,8 @@ final class Message implements MessageApi
     }
 
     /**
+     * Send a batch of emails.
+     *
      * @throws \Ixdf\Postmark\Exceptions\IncorrectApiTokenException
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Ixdf\Postmark\Exceptions\ServerErrorException
@@ -55,6 +62,11 @@ final class Message implements MessageApi
         );
     }
 
+    /**
+     * Send an email using a template created previously.
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function sendWithTemplate(EmailWithTemplate $emailWithTemplate): ApiResponse
     {
         return $this->parseResponse(
@@ -65,6 +77,11 @@ final class Message implements MessageApi
         );
     }
 
+    /**
+     * Send a batch of emails using a template created previously.
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
     public function sendBatchWithTemplate(BatchWithTemplate $batchWithTemplate): ApiResponse
     {
         return $this->parseResponse(
@@ -75,6 +92,13 @@ final class Message implements MessageApi
         );
     }
 
+    /**
+     * Hydrate the given response interface or throw an exception.
+     *
+     * @param  \Psr\Http\Message\ResponseInterface  $response
+     * @param  class-string  $hydratorClass
+     * @return \Ixdf\Postmark\Contracts\ApiResponse
+     */
     private function parseResponse(ResponseInterface $response, string $hydratorClass): ApiResponse
     {
         return match ($response->getStatusCode()) {

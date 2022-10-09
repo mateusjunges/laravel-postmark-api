@@ -48,5 +48,4 @@ final class MessageResponse implements ApiResponse
     {
         return $this->to;
     }
-
 }
