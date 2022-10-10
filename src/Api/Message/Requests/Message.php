@@ -6,21 +6,21 @@ use Ixdf\Postmark\Enums\TrackLinksEnum;
 
 final class Message
 {
-    private string $from; // required
-    private array $to = []; // required
-    private string $subject; // required
-    private string $htmlBody = ""; // required when textBody is empty
-    private string $textBody = ""; // required when htmlBody is empty
-    private array $cc = []; // optional
-    private array $bcc = []; // optional
-    private array $metadata = []; // optional
-    private string $tag = ""; // optional
-    private string $replyTo = ""; // optional
-    private array $headers = []; // optional
-    private bool $trackOpens = true; // optional
-    private ?TrackLinksEnum $trackLinks = null; // optional
-    private string $messageStream = 'broadcast'; // required
-    private array $attachments = []; // optional
+    private string $from;
+    private array $to = [];
+    private string $subject;
+    private string $htmlBody = "";
+    private string $textBody = "";
+    private array $cc = [];
+    private array $bcc = [];
+    private array $metadata = [];
+    private string $tag = "";
+    private string $replyTo = "";
+    private array $headers = [];
+    private bool $trackOpens = true;
+    private ?TrackLinksEnum $trackLinks = null;
+    private string $messageStream = 'broadcast';
+    private array $attachments = [];
 
     public function setFromAddress(string $from, array $options = []): Message
     {
