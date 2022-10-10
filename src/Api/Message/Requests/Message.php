@@ -7,7 +7,7 @@ use Ixdf\Postmark\Enums\TrackLinksEnum;
 final class Message
 {
     private string $from; // required
-    private string $to; // required
+    private array $to = []; // required
     private string $subject; // required
     private string $htmlBody = ""; // required when textBody is empty
     private string $textBody = ""; // required when htmlBody is empty
@@ -33,9 +33,10 @@ final class Message
         return $this;
     }
 
-    public function setToAddress(string $to): Message
+    public function addToAddress(string $to): Message
     {
-        $this->to = $to;
+        $this->to[] = array_merge($this->to, [$to]);
+
         return $this;
     }
 
@@ -57,21 +58,23 @@ final class Message
         return $this;
     }
 
-    public function setCc(array $cc): Message
+    public function addCC(array $cc): Message
     {
-        $this->cc = $cc;
+        $this->cc = array_merge($this->cc, [$cc]);
+
         return $this;
     }
 
-    public function setBcc(array $bcc): Message
+    public function addBcc(array $bcc): Message
     {
-        $this->bcc = $bcc;
+        $this->bcc = array_merge($this->bcc, [$bcc]);
+
         return $this;
     }
 
-    public function setMetadata(array $metadata): Message
+    public function setMetadata(string $key, mixed $metadata): Message
     {
-        $this->metadata = $metadata;
+        $this->metadata[$key] = $metadata;
         return $this;
     }
 
@@ -118,7 +121,7 @@ final class Message
         return $this;
     }
 
-    private function prepareHeaders(): array
+    private function getPreparedHeaders(): array
     {
         $response = [];
 
@@ -136,7 +139,7 @@ final class Message
 
     public function getToAddress(): string
     {
-        return $this->to;
+        return implode(',', $this->to);
     }
 
     public function getFrom(): string
@@ -213,7 +216,7 @@ final class Message
     {
         $array = [
             'From' => $this->from,
-            'To' => $this->to,
+            'To' => implode(',', $this->to),
             'Cc' => implode(',', $this->cc),
             'Bcc' => implode(',', $this->bcc),
             'Subject' => $this->subject,
@@ -221,7 +224,7 @@ final class Message
             'TextBody' => $this->textBody,
             'Tag' => $this->tag,
             'ReplyTo' => $this->replyTo,
-            'Headers' => $this->prepareHeaders(),
+            'Headers' => $this->getPreparedHeaders(),
             'TrackOpens' => $this->trackOpens,
             'Attachments' => $this->attachments,
             'Metadata' => $this->metadata,
