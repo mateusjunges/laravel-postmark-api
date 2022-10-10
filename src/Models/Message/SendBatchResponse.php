@@ -3,6 +3,7 @@
 namespace Ixdf\Postmark\Models\Message;
 
 use Ixdf\Postmark\Contracts\ApiResponse;
+use Ixdf\Postmark\Models\ErrorResponse;
 
 final class SendBatchResponse implements ApiResponse
 {
