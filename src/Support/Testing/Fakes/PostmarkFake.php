@@ -10,7 +10,6 @@ use Ixdf\Postmark\Contracts\TemplateApi;
 use Ixdf\Postmark\Models\Message\Batch;
 use Ixdf\Postmark\Models\Message\BatchWithTemplate;
 use Ixdf\Postmark\Models\Message\EmailWithTemplate;
-use Ixdf\Postmark\Models\Message\Message;
 use PHPUnit\Framework\Assert as PHPUnit;
 
 final class PostmarkFake implements PostmarkService
