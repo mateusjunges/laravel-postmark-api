@@ -13,7 +13,12 @@ final class SendBatchWithTemplateResponse implements ApiResponse
         $model = new self();
 
         foreach ($data as $response) {
-            $model->responses[] = SendWithTemplateResponse::create($response);
+            if ($response['ErrorCode'] !== 0) {
+                $model->responses[] = ErrorResponse::create($response);
+            } else {
+                $model->responses[] = SendWithTemplateResponse::create($response);
+            }
+
         }
 
         return $model;

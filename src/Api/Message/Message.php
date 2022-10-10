@@ -10,7 +10,6 @@ use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
 use Ixdf\Postmark\Api\Message\Requests\Message as MessageRequest;
 use Ixdf\Postmark\Contracts\ApiResponse;
 use Ixdf\Postmark\Contracts\MessageApi;
-use Ixdf\Postmark\Models\Message\ErrorResponse;
 use Ixdf\Postmark\Models\Message\SendResponse;
 use Ixdf\Postmark\Models\Message\SendBatchResponse;
 use Ixdf\Postmark\Models\Message\SendBatchWithTemplateResponse;
