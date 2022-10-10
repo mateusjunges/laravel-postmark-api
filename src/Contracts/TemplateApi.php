@@ -2,7 +2,7 @@
 
 namespace Ixdf\Postmark\Contracts;
 
-use Ixdf\Postmark\Models\Template\Template;
+use Ixdf\Postmark\Api\Template\Requests\Template;
 
 interface TemplateApi
 {

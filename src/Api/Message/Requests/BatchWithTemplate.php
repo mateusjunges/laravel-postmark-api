@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Models\Message;
+namespace Ixdf\Postmark\Api\Message\Requests;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
@@ -16,7 +16,7 @@ final class BatchWithTemplate implements Arrayable, Jsonable
     private ?string $templateAlias = null;
     private ?int $templateId = null;
 
-    /** @var array<int, \Ixdf\Postmark\Models\Message\EmailWithTemplate> $items */
+    /** @var array<int, \Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate> $items */
     private array $items = [];
 
     public function push(EmailWithTemplate $emailWithTemplate): self

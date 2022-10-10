@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Api;
+namespace Ixdf\Postmark\Api\Template;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
+use Ixdf\Postmark\Api\Template\Requests\Template as TemplateRequest;
 use Ixdf\Postmark\Contracts\ApiResponse;
 use Ixdf\Postmark\Contracts\Hydrator;
 use Ixdf\Postmark\Contracts\TemplateApi;
-use Ixdf\Postmark\Models\Template\Response\SingleTemplateResponse;
-use Ixdf\Postmark\Models\Template\Response\TemplateCollectionResponse;
-use Ixdf\Postmark\Models\Template\Response\TemplateDeletedResponse;
-use Ixdf\Postmark\Models\Template\Response\TemplateResponse;
-use Ixdf\Postmark\Models\Template\Template as TemplateRequest;
+use Ixdf\Postmark\Models\Template\ShowResponse;
+use Ixdf\Postmark\Models\Template\IndexResponse;
+use Ixdf\Postmark\Models\Template\DeletedResponse;
+use Ixdf\Postmark\Models\Template\CreateResponse;
 
 final class Template implements TemplateApi
 {
@@ -31,7 +31,7 @@ final class Template implements TemplateApi
             $this->client->request('POST', '/templates', [
                 RequestOptions::BODY => $template->toJson(),
             ]),
-            TemplateResponse::class
+            CreateResponse::class
         );
     }
 
@@ -44,7 +44,7 @@ final class Template implements TemplateApi
     {
         return $this->hydrator->hydrate(
             $this->client->request('GET', "/templates/$templateIdOrAlias"),
-            SingleTemplateResponse::class
+            ShowResponse::class
         );
     }
 
@@ -57,7 +57,7 @@ final class Template implements TemplateApi
     {
         return $this->hydrator->hydrate(
             $this->client->request('GET', '/templates'),
-            TemplateCollectionResponse::class
+            IndexResponse::class
         );
     }
 
@@ -70,7 +70,7 @@ final class Template implements TemplateApi
     {
         return $this->hydrator->hydrate(
             $this->client->request('DELETE', "/templates/$templateIdOrAlias"),
-            TemplateDeletedResponse::class
+            DeletedResponse::class
         );
     }
 }

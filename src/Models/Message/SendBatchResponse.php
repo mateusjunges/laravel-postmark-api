@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Models\Message\Response;
+namespace Ixdf\Postmark\Models\Message;
 
 use Ixdf\Postmark\Contracts\ApiResponse;
 
-final class SendBatchEmailResponse implements ApiResponse
+final class SendBatchResponse implements ApiResponse
 {
     private array $messages = [];
 
@@ -13,7 +13,7 @@ final class SendBatchEmailResponse implements ApiResponse
         $model = new self();
 
         foreach ($data as $message) {
-            $model->messages[] = MessageResponse::create($message);
+            $model->messages[] = SendResponse::create($message);
         }
 
         return $model;

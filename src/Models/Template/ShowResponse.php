@@ -1,10 +1,10 @@
 <?php
 
-namespace Ixdf\Postmark\Models\Template\Response;
+namespace Ixdf\Postmark\Models\Template;
 
 use Ixdf\Postmark\Contracts\ApiResponse;
 
-final class SingleTemplateResponse implements ApiResponse
+final class ShowResponse implements ApiResponse
 {
     private string $name;
     private int $templateId;

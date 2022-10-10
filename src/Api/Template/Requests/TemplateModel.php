@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Models\Template;
+namespace Ixdf\Postmark\Api\Template\Requests;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;

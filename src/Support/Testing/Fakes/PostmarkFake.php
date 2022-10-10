@@ -4,12 +4,12 @@ namespace Ixdf\Postmark\Support\Testing\Fakes;
 
 use BadMethodCallException;
 use Illuminate\Support\Collection;
+use Ixdf\Postmark\Api\Message\Requests\Batch;
+use Ixdf\Postmark\Api\Message\Requests\BatchWithTemplate;
+use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
 use Ixdf\Postmark\Contracts\MessageApi;
 use Ixdf\Postmark\Contracts\PostmarkService;
 use Ixdf\Postmark\Contracts\TemplateApi;
-use Ixdf\Postmark\Models\Message\Batch;
-use Ixdf\Postmark\Models\Message\BatchWithTemplate;
-use Ixdf\Postmark\Models\Message\EmailWithTemplate;
 use PHPUnit\Framework\Assert as PHPUnit;
 
 final class PostmarkFake implements PostmarkService

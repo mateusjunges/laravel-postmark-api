@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Models\Message;
+namespace Ixdf\Postmark\Api\Message\Requests;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
@@ -13,7 +13,7 @@ final class Batch implements Arrayable, Jsonable
 
     private const MAX_RECIPIENTS = 500;
 
-    /** @var array<int, \Ixdf\Postmark\Models\Message\Message> $items */
+    /** @var array<int, \Ixdf\Postmark\Api\Message\Requests\Message> $items */
     private array $items = [];
 
     /**

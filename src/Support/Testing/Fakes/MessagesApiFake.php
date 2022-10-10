@@ -3,12 +3,12 @@
 namespace Ixdf\Postmark\Support\Testing\Fakes;
 
 use Closure;
+use Ixdf\Postmark\Api\Message\Requests\Batch;
+use Ixdf\Postmark\Api\Message\Requests\BatchWithTemplate;
+use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
+use Ixdf\Postmark\Api\Message\Requests\Message;
 use Ixdf\Postmark\Contracts\ApiResponse;
 use Ixdf\Postmark\Contracts\MessageApi;
-use Ixdf\Postmark\Models\Message\Batch;
-use Ixdf\Postmark\Models\Message\BatchWithTemplate;
-use Ixdf\Postmark\Models\Message\EmailWithTemplate;
-use Ixdf\Postmark\Models\Message\Message;
 
 final class MessagesApiFake implements MessageApi
 {

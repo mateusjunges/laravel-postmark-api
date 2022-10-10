@@ -1,11 +1,11 @@
 <?php
 
-namespace Ixdf\Postmark\Models\Template\Response;
+namespace Ixdf\Postmark\Models\Template;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Ixdf\Postmark\Contracts\ApiResponse;
 
-final class TemplateDeletedResponse implements ApiResponse, Arrayable
+final class DeletedResponse implements ApiResponse, Arrayable
 {
     private string $message;
     private int $errorCode = 0;

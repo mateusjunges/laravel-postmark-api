@@ -1,9 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Api;
+namespace Ixdf\Postmark\Api\Message;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
+use Ixdf\Postmark\Api\Message\Requests\Batch;
+use Ixdf\Postmark\Api\Message\Requests\BatchWithTemplate;
+use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
+use Ixdf\Postmark\Api\Message\Requests\Message as MessageRequest;
 use Ixdf\Postmark\Contracts\ApiResponse;
 use Ixdf\Postmark\Contracts\Hydrator;
 use Ixdf\Postmark\Contracts\MessageApi;
@@ -11,14 +15,10 @@ use Ixdf\Postmark\Exceptions\IncorrectApiTokenException;
 use Ixdf\Postmark\Exceptions\PostmarkUnavailable;
 use Ixdf\Postmark\Exceptions\ServerErrorException;
 use Ixdf\Postmark\Exceptions\UnknownException;
-use Ixdf\Postmark\Models\Message\Batch;
-use Ixdf\Postmark\Models\Message\BatchWithTemplate;
-use Ixdf\Postmark\Models\Message\Message as MessageRequest;
-use Ixdf\Postmark\Models\Message\Response\MessageResponse;
-use Ixdf\Postmark\Models\Message\Response\SendBatchEmailResponse;
-use Ixdf\Postmark\Models\Message\Response\SendBatchWithTemplateResponse;
-use Ixdf\Postmark\Models\Message\Response\SendWithTemplateResponse;
-use Ixdf\Postmark\Models\Message\EmailWithTemplate;
+use Ixdf\Postmark\Models\Message\SendResponse;
+use Ixdf\Postmark\Models\Message\SendBatchResponse;
+use Ixdf\Postmark\Models\Message\SendBatchWithTemplateResponse;
+use Ixdf\Postmark\Models\Message\SendWithTemplateResponse;
 use Psr\Http\Message\ResponseInterface;
 
 final class Message implements MessageApi
@@ -39,7 +39,7 @@ final class Message implements MessageApi
             $this->client->request('POST', '/email', [
                 RequestOptions::BODY => $message->toJson()
             ]),
-            MessageResponse::class
+            SendResponse::class
         );
     }
 
@@ -58,7 +58,7 @@ final class Message implements MessageApi
             $this->client->request('POST', '/email/batch', [
                 RequestOptions::BODY => $batch->toJson(),
             ]),
-            SendBatchEmailResponse::class
+            SendBatchResponse::class
         );
     }
 

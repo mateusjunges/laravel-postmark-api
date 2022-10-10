@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Models\Message\Response;
+namespace Ixdf\Postmark\Models\Message;
 
 use Ixdf\Postmark\Contracts\ApiResponse;
 

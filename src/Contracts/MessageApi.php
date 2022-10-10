@@ -2,10 +2,10 @@
 
 namespace Ixdf\Postmark\Contracts;
 
-use Ixdf\Postmark\Models\Message\Batch;
-use Ixdf\Postmark\Models\Message\BatchWithTemplate;
-use Ixdf\Postmark\Models\Message\EmailWithTemplate;
-use Ixdf\Postmark\Models\Message\Message;
+use Ixdf\Postmark\Api\Message\Requests\Batch;
+use Ixdf\Postmark\Api\Message\Requests\BatchWithTemplate;
+use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
+use Ixdf\Postmark\Api\Message\Requests\Message;
 
 interface MessageApi
 {

@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Models\Message\Response;
+namespace Ixdf\Postmark\Models\Message;
 
 use Ixdf\Postmark\Contracts\ApiResponse;
 
-final class MessageResponse implements ApiResponse
+final class SendResponse implements ApiResponse
 {
     private int $errorCode = 0;
     private string $message;
