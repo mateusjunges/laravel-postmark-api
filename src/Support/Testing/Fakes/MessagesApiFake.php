@@ -45,28 +45,28 @@ final class MessagesApiFake implements MessageApi
         return ApiResponseFake::create([]);
     }
 
-    public function sendSingleMessageUsing(callable $callback): self
+    public function sendSingleMessageUsing(Closure $callback): self
     {
         $this->sendSingleMessageCallback = $callback;
 
         return $this;
     }
 
-    public function sendBatchesUsing(callable $callback): self
+    public function sendBatchesUsing(Closure $callback): self
     {
         $this->sendBatchesCallback = $callback;
 
         return $this;
     }
 
-    public function sendTemplatesUsing(callable $callback): self
+    public function sendTemplatesUsing(Closure $callback): self
     {
         $this->sendTemplatesCallback = $callback;
 
         return $this;
     }
 
-    public function sendBatchTemplatesUsing(callable $callback): self
+    public function sendBatchTemplatesUsing(Closure $callback): self
     {
         $this->sendBatchTemplatesCallback = $callback;
 
