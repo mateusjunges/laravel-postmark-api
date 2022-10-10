@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+    This is simply a file with some directory settings. Phpcs searches for this file
+    if no argument with another ruleset provided. Thus, we can simply run 'phpcs'
+    and CS will use this configuration which extends "./tools/phpcs/ruleset.xml".
+    We have divided CS configuration into 2 files because PHPStorm can't use
+    this ruleset for inspections (it is looking for the file with the name of 'ruleset.xml').
+    @see https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml
+    @see https://github.com/squizlabs/PHP_CodeSniffer/blob/3.0/src/Standards/PSR2/ruleset.xml
+    examples:
+    # Check only one file
+    phpcs app/Models/Billing/Invoice.php
+    # Checks a directory
+    phpcs app/Models/Billing
+    How to ignore single line: // phpcs:ignore
+    How to ignore single rule: // phpcs:ignore Squiz.Arrays.ArrayDeclaration.SingleLineNotAllowed
+    How to ignore single rule: // phpcs:ignore Generic.Metrics.CyclomaticComplexity.MaxExceeded
+    How to ignore lines:
+    // phpcs:disable
+    $y0ur_uglyCode = array();
+    // phpcs:enable
+   @see https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-files-and-folders
+   @see https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
+-->
+
+<ruleset name="IxDF-web">
+    <description>Project-level coding standard</description>
+    <arg name="extensions" value="php"/><!--CS can also check js, inc, lib file - omit them-->
+    <arg name="report-width" value="120"/>
+
+    <!--
+          Include everything in another ruleset.xml file. This is
+          really handy if you want to customise another developer's
+          custom standard. They just need to distribute their single
+          ruleset file to allow this.
+       -->
+    <rule ref="IxDFCodingStandard"/>
+
+    <!--
+        If no files or directories are specified on the command line
+        your custom standard can specify what files should be checked
+        instead.
+        Note that specifying any file or directory path
+        on the command line will ignore all file tags.
+     -->
+    <file>./</file>
+    <exclude-pattern>!copied_logs</exclude-pattern>
+    <exclude-pattern>cache/*</exclude-pattern>
+    <exclude-pattern>*/docs/*</exclude-pattern>
+    <exclude-pattern>bootstrap/cache/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+
+    <rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+        <exclude-pattern>./database/*</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.Classes.ClassFileName">
+        <exclude-pattern>./migrations*</exclude-pattern>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName.NoMatchBetweenTypeNameAndFileName">
+        <exclude-pattern>./database/migrations*</exclude-pattern>
+    </rule>
+
+    <!--see https://github.com/slevomat/coding-standard#slevomatcodingstandardfilestypenamematchesfilename-->
+    <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName"><!--follow the PSR-0 or PSR-4 autoloading standards-->
+        <properties>
+            <property name="rootNamespaces" type="array">
+                <element key="src" value="Ixdf/Postmark"/>
+            </property>
+        </properties>
+        <severity>6</severity>
+    </rule>
+
+    <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
+        <exclude-pattern>./tests*</exclude-pattern>
+    </rule>
+
+    <rule ref="Generic.CodeAnalysis.UselessOverridingMethod.Found">
+        <exclude-pattern>./tests/Factories*</exclude-pattern>
+    </rule>
+
+    <rule ref="Generic.Files.LineLength">
+        <exclude-pattern>./config/*.php</exclude-pattern>
+        <exclude-pattern>./tests/*.php</exclude-pattern>
+
+        <properties>
+            <property name="lineLimit" value="160"/>
+            <property name="absoluteLineLimit" value="220"/>
+            <property name="ignoreComments" value="true"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.Files.LineLength.TooLong">
+        <severity>1</severity><!-- Temp hide the warn -->
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Complexity.Cognitive">
+        <properties>
+            <property name="maxComplexity" value="20"/>
+        </properties>
+    </rule>
+
+    <!-- Laravel uses if ($state instanceof Closure && $state) { $state = $state->bindTo($this); } that leads to ErrorException for static closures -->
+    <rule ref="SlevomatCodingStandard.Functions.StaticClosure.ClosureNotStatic">
+        <exclude-pattern>./tests/Factories*</exclude-pattern>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Files.FileLength">
+        <properties>
+            <property name="maxLinesLength" value="1000"/>
+        </properties>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Classes.ClassLength">
+        <properties>
+            <property name="maxLinesLength" value="400"/>
+        </properties>
+    </rule>
+</ruleset>
