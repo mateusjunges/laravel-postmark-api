@@ -63,21 +63,21 @@ final class EmailWithTemplate
 
     public function addToAddress(string $to): EmailWithTemplate
     {
-        $this->to[] = array_merge($this->to, [$to]);
+        $this->to = array_merge($this->to, [$to]);
 
         return $this;
     }
 
     public function addCcAddress(string $cc): EmailWithTemplate
     {
-        $this->cc[] = array_merge($this->to, [$cc]);
+        $this->cc = array_merge($this->to, [$cc]);
 
         return $this;
     }
 
     public function addBccAddress(string $bcc): EmailWithTemplate
     {
-        $this->bcc[] = array_merge($this->bcc, [$bcc]);
+        $this->bcc = array_merge($this->bcc, [$bcc]);
 
         return $this;
     }

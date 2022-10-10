@@ -35,7 +35,7 @@ final class Message
 
     public function addToAddress(string $to): Message
     {
-        $this->to[] = array_merge($this->to, [$to]);
+        $this->to = array_merge($this->to, [$to]);
 
         return $this;
     }
