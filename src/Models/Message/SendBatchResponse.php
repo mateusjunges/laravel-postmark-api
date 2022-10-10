@@ -13,7 +13,11 @@ final class SendBatchResponse implements ApiResponse
         $model = new self();
 
         foreach ($data as $message) {
-            $model->messages[] = SendResponse::create($message);
+            if ($message['ErrorCode'] !== 0) {
+                $model->messages[] = ErrorResponse::create($message);
+            } else {
+                $model->messages[] = SendResponse::create($message);
+            }
         }
 
         return $model;

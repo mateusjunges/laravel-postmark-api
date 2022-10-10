@@ -3,12 +3,15 @@
 namespace Ixdf\Postmark\Api;
 
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\ClientException;
 use Ixdf\Postmark\Contracts\ApiResponse;
 use Ixdf\Postmark\Contracts\Hydrator;
+use Ixdf\Postmark\Exceptions\HydrationException;
 use Ixdf\Postmark\Exceptions\IncorrectApiTokenException;
 use Ixdf\Postmark\Exceptions\PostmarkUnavailable;
 use Ixdf\Postmark\Exceptions\ServerErrorException;
 use Ixdf\Postmark\Exceptions\UnknownException;
+use Ixdf\Postmark\Models\Message\ErrorResponse;
 use Psr\Http\Message\ResponseInterface;
 
 abstract class Api
@@ -21,18 +24,33 @@ abstract class Api
     /**
      * Hydrate the given response interface or throw an exception.
      *
-     * @param  \Psr\Http\Message\ResponseInterface  $response
-     * @param  class-string  $hydratorClass
+     * @param \Psr\Http\Message\ResponseInterface $response
+     * @param class-string $hydratorClass
      * @return \Ixdf\Postmark\Contracts\ApiResponse
      */
     protected function parseResponse(ResponseInterface $response, string $hydratorClass): ApiResponse
     {
+        try {
+            return $this->hydrator->hydrate($response, $hydratorClass);
+        } catch (HydrationException) {}
+
         return match (true) {
-            200 === $response->getStatusCode() => $this->hydrator->hydrate($response, $hydratorClass),
-            401 === $response->getStatusCode() => throw new IncorrectApiTokenException($response->getBody()->getContents()),
-            503 === $response->getStatusCode() => throw new PostmarkUnavailable($response->getBody()->getContents()),
-            500 >= $response->getStatusCode() => throw new ServerErrorException($response->getBody()->getContents()),
+            $response->getStatusCode() === 401 => throw new IncorrectApiTokenException($response->getBody()->getContents()),
+            $response->getStatusCode() === 503 => throw new PostmarkUnavailable($response->getBody()->getContents()),
+            $response->getStatusCode() >= 500 => throw new ServerErrorException($response->getBody()->getContents()),
             default => throw new UnknownException($response->getBody()->getContents())
         };
+    }
+
+    protected function request(string $method, string $uri, string $hydrateUsing, array $options = [], string $errorHydrator = ErrorResponse::class): ApiResponse
+    {
+        try {
+            $response = $this->client->request($method, $uri, $options);
+        } catch (ClientException $exception) {
+            $response = $exception->getResponse();
+            $hydrateUsing = $errorHydrator;
+        }
+
+        return $this->parseResponse($response, $hydrateUsing);
     }
 }
