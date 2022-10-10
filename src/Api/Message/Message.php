@@ -101,11 +101,11 @@ final class Message implements MessageApi
      */
     private function parseResponse(ResponseInterface $response, string $hydratorClass): ApiResponse
     {
-        return match ($response->getStatusCode()) {
-            200 => $this->hydrator->hydrate($response, $hydratorClass),
-            401 => throw new IncorrectApiTokenException($response->getBody()->getContents()),
-            500 => throw new ServerErrorException($response->getBody()->getContents()),
-            503 => throw new PostmarkUnavailable($response->getBody()->getContents()),
+        return match (true) {
+            200 === $response->getStatusCode() => $this->hydrator->hydrate($response, $hydratorClass),
+            401 === $response->getStatusCode() => throw new IncorrectApiTokenException($response->getBody()->getContents()),
+            503 === $response->getStatusCode() => throw new PostmarkUnavailable($response->getBody()->getContents()),
+            500 >= $response->getStatusCode() => throw new ServerErrorException($response->getBody()->getContents()),
             default => throw new UnknownException($response->getBody()->getContents())
         };
     }
