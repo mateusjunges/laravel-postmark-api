@@ -2,24 +2,18 @@
 
 namespace Ixdf\Postmark\Api\Template;
 
-use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
+use Ixdf\Postmark\Api\Api;
 use Ixdf\Postmark\Api\Template\Requests\Template as TemplateRequest;
 use Ixdf\Postmark\Contracts\ApiResponse;
-use Ixdf\Postmark\Contracts\Hydrator;
 use Ixdf\Postmark\Contracts\TemplateApi;
 use Ixdf\Postmark\Models\Template\ShowResponse;
 use Ixdf\Postmark\Models\Template\IndexResponse;
 use Ixdf\Postmark\Models\Template\DeletedResponse;
 use Ixdf\Postmark\Models\Template\CreateResponse;
 
-final class Template implements TemplateApi
+final class Template extends Api implements TemplateApi
 {
-    public function __construct(
-        private readonly ClientInterface $client,
-        private readonly Hydrator $hydrator
-    ) {}
-
     /**
      * Create a new template with the given data.
      *
@@ -27,7 +21,7 @@ final class Template implements TemplateApi
      */
     public function create(TemplateRequest $template): ApiResponse
     {
-        return $this->hydrator->hydrate(
+        return $this->parseResponse(
             $this->client->request('POST', '/templates', [
                 RequestOptions::BODY => $template->toJson(),
             ]),
@@ -42,7 +36,7 @@ final class Template implements TemplateApi
      */
     public function find(string $templateIdOrAlias): ApiResponse
     {
-        return $this->hydrator->hydrate(
+        return $this->parseResponse(
             $this->client->request('GET', "/templates/$templateIdOrAlias"),
             ShowResponse::class
         );
@@ -55,7 +49,7 @@ final class Template implements TemplateApi
      */
     public function all(): ApiResponse
     {
-        return $this->hydrator->hydrate(
+        return $this->parseResponse(
             $this->client->request('GET', '/templates'),
             IndexResponse::class
         );
@@ -68,7 +62,7 @@ final class Template implements TemplateApi
      */
     public function delete(string $templateIdOrAlias): ApiResponse
     {
-        return $this->hydrator->hydrate(
+        return $this->parseResponse(
             $this->client->request('DELETE', "/templates/$templateIdOrAlias"),
             DeletedResponse::class
         );

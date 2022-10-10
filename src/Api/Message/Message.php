@@ -2,32 +2,21 @@
 
 namespace Ixdf\Postmark\Api\Message;
 
-use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
+use Ixdf\Postmark\Api\Api;
 use Ixdf\Postmark\Api\Message\Requests\Batch;
 use Ixdf\Postmark\Api\Message\Requests\BatchWithTemplate;
 use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
 use Ixdf\Postmark\Api\Message\Requests\Message as MessageRequest;
 use Ixdf\Postmark\Contracts\ApiResponse;
-use Ixdf\Postmark\Contracts\Hydrator;
 use Ixdf\Postmark\Contracts\MessageApi;
-use Ixdf\Postmark\Exceptions\IncorrectApiTokenException;
-use Ixdf\Postmark\Exceptions\PostmarkUnavailable;
-use Ixdf\Postmark\Exceptions\ServerErrorException;
-use Ixdf\Postmark\Exceptions\UnknownException;
 use Ixdf\Postmark\Models\Message\SendResponse;
 use Ixdf\Postmark\Models\Message\SendBatchResponse;
 use Ixdf\Postmark\Models\Message\SendBatchWithTemplateResponse;
 use Ixdf\Postmark\Models\Message\SendWithTemplateResponse;
-use Psr\Http\Message\ResponseInterface;
 
-final class Message implements MessageApi
+final class Message extends Api implements MessageApi
 {
-    public function __construct(
-        private readonly ClientInterface $client,
-        private readonly Hydrator $hydrator,
-    ) {}
-
     /**
      * Send a given message.
      *
@@ -90,23 +79,5 @@ final class Message implements MessageApi
             ]),
             SendBatchWithTemplateResponse::class
         );
-    }
-
-    /**
-     * Hydrate the given response interface or throw an exception.
-     *
-     * @param  \Psr\Http\Message\ResponseInterface  $response
-     * @param  class-string  $hydratorClass
-     * @return \Ixdf\Postmark\Contracts\ApiResponse
-     */
-    private function parseResponse(ResponseInterface $response, string $hydratorClass): ApiResponse
-    {
-        return match (true) {
-            200 === $response->getStatusCode() => $this->hydrator->hydrate($response, $hydratorClass),
-            401 === $response->getStatusCode() => throw new IncorrectApiTokenException($response->getBody()->getContents()),
-            503 === $response->getStatusCode() => throw new PostmarkUnavailable($response->getBody()->getContents()),
-            500 >= $response->getStatusCode() => throw new ServerErrorException($response->getBody()->getContents()),
-            default => throw new UnknownException($response->getBody()->getContents())
-        };
     }
 }
