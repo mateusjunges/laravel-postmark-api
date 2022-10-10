@@ -28,7 +28,7 @@ abstract class Api
      * @param class-string $hydratorClass
      * @return \Ixdf\Postmark\Contracts\ApiResponse
      */
-    protected function parseResponse(ResponseInterface $response, string $hydratorClass): ApiResponse
+    private function parseResponse(ResponseInterface $response, string $hydratorClass): ApiResponse
     {
         try {
             return $this->hydrator->hydrate($response, $hydratorClass);

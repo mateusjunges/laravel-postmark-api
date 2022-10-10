@@ -16,55 +16,35 @@ final class Template extends Api implements TemplateApi
 {
     /**
      * Create a new template with the given data.
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function create(TemplateRequest $template): ApiResponse
     {
-        return $this->parseResponse(
-            $this->client->request('POST', '/templates', [
-                RequestOptions::BODY => $template->toJson(),
-            ]),
-            CreateResponse::class
-        );
+        return $this->request('POST', '/templates', CreateResponse::class, [
+            RequestOptions::BODY => $template->toJson(),
+        ]);
     }
 
     /**
      * Search for a specific template via ID or Alias.
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function find(string $templateIdOrAlias): ApiResponse
     {
-        return $this->parseResponse(
-            $this->client->request('GET', "/templates/$templateIdOrAlias"),
-            ShowResponse::class
-        );
+        return $this->request('GET', "/templates/$templateIdOrAlias",ShowResponse::class);
     }
 
     /**
      * Fetch all templates.
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function all(): ApiResponse
     {
-        return $this->parseResponse(
-            $this->client->request('GET', '/templates'),
-            IndexResponse::class
-        );
+        return $this->request('GET', '/templates', IndexResponse::class);
     }
 
     /**
      * Delete the given template.
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function delete(string $templateIdOrAlias): ApiResponse
     {
-        return $this->parseResponse(
-            $this->client->request('DELETE', "/templates/$templateIdOrAlias"),
-            DeletedResponse::class
-        );
+        return $this->request('DELETE', "/templates/$templateIdOrAlias", DeletedResponse::class);
     }
 }
