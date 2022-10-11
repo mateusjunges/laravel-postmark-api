@@ -107,7 +107,7 @@ final class Template implements Arrayable, Jsonable
         return collect([
             'Name' => $this->name,
             'Alias' => $this->alias,
-            'Subject' => $this->name,
+            'Subject' => $this->subject,
             'TextBody' => $this->replacePostmarkPlaceholders($this->textBody),
             'HtmlBody' => $this->replacePostmarkPlaceholders($this->htmlBody),
             'TemplateType' => $this->templateType,
