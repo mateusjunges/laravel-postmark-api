@@ -10,6 +10,8 @@
     - [Sending batch emails with template](#sending-batch-messages-with-template)
   - [Templates API](#templates-api)
     - [Create template](#create-template)
+    - [Search for specific template](#search-a-specific-template)
+    - [List all templates](#get-all-templates)
 
 ## Installation
 You can install this package using composer:
@@ -171,3 +173,22 @@ $template = (new Template())
 
 Postmark::templates()->create($template); // Returns an instance of `Ixdf\Postmark\Models\Template\CreateResponse`
 ```
+
+#### Search a specific template
+You may search for a specific template using the `find` method, which accepts the template id or alias as parameter:
+
+```php
+use Ixdf\Postmark\Facades\Postmark;
+
+Postmark::templates()->find($templateIdOrAlias); // Returns an instance of `Ixdf\Postmark\Models\Template\ShowResponse`
+```
+
+#### Get all templates
+To get a collection with all of your stored templates, use the `all` method:
+
+```php
+use Ixdf\Postmark\Facades\Postmark;
+
+Postmark::templates()->all(); // Returns an instance of `Ixdf\Postmark\Models\Template\IndexResponse`
+```
+
