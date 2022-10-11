@@ -1,5 +1,14 @@
 # Postmark API Client for Laravel apps
 
+- [Installation](#installation)
+  - [Configuration](#configuration)
+- [Postmark API](#postmark-api)
+  - [Emails API](#email-api)
+    - [Sending single emails](#sending-single-emails)
+    - [Sending batch emails](#sending-batch-emails)
+    - [Sending single emails with template](#sending-single-messages-with-template)
+    - [Sending batch emails with template](#sending-batch-messages-with-template)
+
 ## Installation
 You can install this package using composer:
 
