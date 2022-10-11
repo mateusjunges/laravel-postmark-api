@@ -8,6 +8,8 @@
     - [Sending batch emails](#sending-batch-emails)
     - [Sending single emails with template](#sending-single-messages-with-template)
     - [Sending batch emails with template](#sending-batch-messages-with-template)
+  - [Templates API](#templates-api)
+    - [Create template](#create-template)
 
 ## Installation
 You can install this package using composer:
@@ -138,3 +140,33 @@ $batch->push($message2);
 Postmark::messages()->sendBatchWithTemplate($batch); // Returns an instance of `Ixdf\Postmark\Models\Message\SendBatchWithTemplateResponse`
 ```
 
+### Templates API
+This API lets you manage templates for a specific server.
+
+> **Warning**
+> A server may have up to 100 templates. Requests that exceed this limit won't be processed. Please [contact support](https://postmarkapp.com/contact) if you need mor templates within a Server.
+
+To have access to the `templates` API, you must use the `templates` method, available with the `Postmark` facade:
+
+```php
+\Ixdf\Postmark\Facades\Postmark::templates();
+```
+
+This returns a `TemplateApi` contract, responsible for handling template API calls.
+
+#### Create template
+To create a template, you must use the `create` method, which accepts a `Ixdf\Postmark\Api\Template\Requests\Template` parameter:
+
+```php
+use Ixdf\Postmark\Facades\Postmark;
+use Ixdf\Postmark\Api\Template\Requests\Template;
+
+$template = (new Template())
+    ->setHtmlBody('<html></html>') //The content to use for the HtmlBody when this template is used to send email.
+    ->setTextBody('text') //The content to use for the TextBody when this template is used to send email.
+    ->setSubject('Email subject')
+    ->setAlias('The alias of the template')
+    ->setName('The name of the template');
+
+Postmark::templates()->create($template); // Returns an instance of `Ixdf\Postmark\Models\Template\CreateResponse`
+```
