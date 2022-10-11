@@ -144,6 +144,7 @@ Postmark::messages()->sendBatchWithTemplate($batch); // Returns an instance of `
 This API lets you manage templates for a specific server.
 
 > **Warning**
+> 
 > A server may have up to 100 templates. Requests that exceed this limit won't be processed. Please [contact support](https://postmarkapp.com/contact) if you need mor templates within a Server.
 
 To have access to the `templates` API, you must use the `templates` method, available with the `Postmark` facade:
