@@ -81,7 +81,51 @@ $batch = new Batch();
 $batch->push($message1);
 $batch->push($message2);
 
-$response = Postmark::messages()->sendBatch($batch); // Returns a Ixdf\Postmark\Models\Message\SendBatchResponse instance
+$response = Postmark::messages()->sendBatch($batch); // Returns an Ixdf\Postmark\Models\Message\SendBatchResponse instance
 ```
 
+#### Sending single messages with Template
+To send single messages using a template, use the `sendWithTemplate` method, which accepts an instance of `Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate` as parameter:
+
+```php
+use Ixdf\Postmark\Facades\Postmark;
+use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
+
+$message = (new EmailWithTemplate())
+    ->setTemplateId(1234) // The ID of the template to be used 
+    ->setTemplateAlias('Alias_1234') // The Alias of the template to be used (not necessary when using `setTemplateId`
+    ->setFromAddress('from@example.com', ['full_name' => 'From Example'])
+    ->addToAddress('receiver@example.com')
+    ->addTag('Message tag');
+    
+Postmark::messages()->sendWithTemplate($message); // Returns an instance of `Ixdf\Postmark\Models\Message\SendWithTemplateResponse`
+```
+
+#### Sending batch messages with template
+To send single messages using a template, use the `sendBatchWithTemplate` method, which accepts an instance of `Ixdf\Postmark\Api\Message\Requests\BatchWithTemplate` as parameter:
+
+```php
+use Ixdf\Postmark\Facades\Postmark;
+use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
+use Ixdf\Postmark\Api\Message\Requests\BatchWithTemplate;
+$message1 = (new EmailWithTemplate())
+    ->setTemplateId(1234) // The ID of the template to be used 
+    ->setTemplateAlias('Alias_1234') // The Alias of the template to be used (not necessary when using `setTemplateId`
+    ->setFromAddress('from@example.com', ['full_name' => 'From Example'])
+    ->addToAddress('receiver@example.com')
+    ->addTag('Message tag');
+    
+$message2 = (new EmailWithTemplate())
+    ->setTemplateId(1234) // The ID of the template to be used 
+    ->setTemplateAlias('Alias_1234') // The Alias of the template to be used (not necessary when using `setTemplateId`
+    ->setFromAddress('from@example.com', ['full_name' => 'From Example'])
+    ->addToAddress('receiver_2@example.com')
+    ->addTag('Message tag 2');
+    
+$batch = new BatchWithTemplate();
+$batch->push($message1);
+$batch->push($message2);
+
+Postmark::messages()->sendBatchWithTemplate($batch); // Returns an instance of `Ixdf\Postmark\Models\Message\SendBatchWithTemplateResponse`
+```
 
