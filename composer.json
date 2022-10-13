@@ -31,5 +31,12 @@
         "phpunit/phpunit": "^9.5",
         "phpstan/phpstan": "^1.8",
         "vimeo/psalm": "^4.28"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ixdf\\Postmark\\Providers\\PostmarkServiceProvider"
+            ]
+        }
     }
 }
