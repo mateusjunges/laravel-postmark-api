@@ -47,10 +47,11 @@ To send single emails, you should use the `send` method, which accepts a `$messa
 ```php
 use Ixdf\Postmark\Facades\Postmark;
 use Ixdf\Postmark\Api\Message\Requests\Message;
+use Ixdf\Postmark\Api\Message\Requests\Address;
 
 $message = (new Message())
-    ->setFromAddress('from@example.com', ['full_name' => 'From Example'])
-    ->addToAddress('recipient@example.com')
+    ->setFromAddress(new Address('from@example.com', 'From Name'))
+    ->addToAddress(new Address('recipient@example.com'))
     ->setSubject('Email subject')
     ->setTextBody('This is the body of the email, in text format')
     ->setHtmlBody('<html>This is the body of the email, in html format</html>')
@@ -69,10 +70,11 @@ To send batch emails you just need to use a different method from the `MessageAp
 use Ixdf\Postmark\Api\Message\Requests\Message;
 use Ixdf\Postmark\Api\Message\Requests\Batch;
 use Ixdf\Postmark\Facades\Postmark;
+use Ixdf\Postmark\Api\Message\Requests\Address;
 
 $message1 = (new Message())
-    ->setFromAddress('from@example.com', ['full_name' => 'From Example'])
-    ->addToAddress('recipient@example.com')
+    ->setFromAddress(new Address('from@example.com', 'From Name'))
+    ->addToAddress(new Address('recipient@example.com'))
     ->setSubject('Email subject')
     ->setTextBody('This is the body of the email, in text format')
     ->setHtmlBody('<html>This is the body of the email, in html format</html>')
@@ -81,8 +83,8 @@ $message1 = (new Message())
     ->addTag('Email tag');
 
 $message2 = (new Message())
-    ->setFromAddress('from@example.com', ['full_name' => 'From Example'])
-    ->addToAddress('recipient2@example.com')
+    ->setFromAddress(new Address('from@example.com', 'From Name'))
+    ->addToAddress(new Address('recipient2@example.com'))
     ->setSubject('Email subject 2')
     ->setTextBody('This is the body of the second email, in text format')
     ->setHtmlBody('<html>This is the body of the second email, in html format</html>')
@@ -103,12 +105,13 @@ To send single messages using a template, use the `sendWithTemplate` method, whi
 ```php
 use Ixdf\Postmark\Facades\Postmark;
 use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
+use Ixdf\Postmark\Api\Message\Requests\Address;
 
 $message = (new EmailWithTemplate())
     ->setTemplateId(1234) // The ID of the template to be used 
     ->setTemplateAlias('Alias_1234') // The Alias of the template to be used (not necessary when using `setTemplateId`
-    ->setFromAddress('from@example.com', ['full_name' => 'From Example'])
-    ->addToAddress('receiver@example.com')
+    ->setFromAddress(new Address('from@example.com', 'From Name'))
+    ->addToAddress(new Address('recipient@example.com'))
     ->addTag('Message tag');
     
 Postmark::messages()->sendWithTemplate($message); // Returns an instance of `Ixdf\Postmark\Models\Message\SendWithTemplateResponse`
@@ -121,18 +124,20 @@ To send single messages using a template, use the `sendBatchWithTemplate` method
 use Ixdf\Postmark\Facades\Postmark;
 use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
 use Ixdf\Postmark\Api\Message\Requests\BatchWithTemplate;
+use Ixdf\Postmark\Api\Message\Requests\Address;
+
 $message1 = (new EmailWithTemplate())
     ->setTemplateId(1234) // The ID of the template to be used 
     ->setTemplateAlias('Alias_1234') // The Alias of the template to be used (not necessary when using `setTemplateId`
-    ->setFromAddress('from@example.com', ['full_name' => 'From Example'])
-    ->addToAddress('receiver@example.com')
+    ->setFromAddress(new Address('from@example.com', 'From Name'))
+    ->addToAddress(new Address('recipient@example.com'))
     ->addTag('Message tag');
     
 $message2 = (new EmailWithTemplate())
     ->setTemplateId(1234) // The ID of the template to be used 
     ->setTemplateAlias('Alias_1234') // The Alias of the template to be used (not necessary when using `setTemplateId`
-    ->setFromAddress('from@example.com', ['full_name' => 'From Example'])
-    ->addToAddress('receiver_2@example.com')
+    ->setFromAddress(new Address('from@example.com', 'From Name'))
+    ->addToAddress(new Address('recipient2@example.com'))
     ->addTag('Message tag 2');
     
 $batch = new BatchWithTemplate();
