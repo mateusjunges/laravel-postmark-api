@@ -22,20 +22,16 @@ final class Message
     private string $messageStream = 'broadcast';
     private array $attachments = [];
 
-    public function setFromAddress(string $from, array $options = []): Message
+    public function setFromAddress(Address $from): Message
     {
-        if (isset($options['full_name'])) {
-            $this->from = $options['full_name'] . " <$from>";
-        } else {
-            $this->from = "$from <$from>";
-        }
+        $this->from = "{$from->fullName()} <$from->emailAddress>";
 
         return $this;
     }
 
-    public function addToAddress(string $to): Message
+    public function addToAddress(Address $to): Message
     {
-        $this->to = array_merge($this->to, [$to]);
+        $this->to = array_merge($this->to, ["{$to->fullName()} <$to->emailAddress>"]);
 
         return $this;
     }
@@ -58,16 +54,16 @@ final class Message
         return $this;
     }
 
-    public function addCC(array $cc): Message
+    public function addCC(Address $cc): Message
     {
-        $this->cc = array_merge($this->cc, [$cc]);
+        $this->cc = array_merge($this->cc, ["{$cc->fullName()} <$cc->emailAddress>"]);
 
         return $this;
     }
 
-    public function addBcc(array $bcc): Message
+    public function addBcc(Address $bcc): Message
     {
-        $this->bcc = array_merge($this->bcc, [$bcc]);
+        $this->bcc = array_merge($this->bcc, ["{$bcc->fullName()} <$bcc->emailAddress>"]);
 
         return $this;
     }
@@ -85,9 +81,10 @@ final class Message
         return $this;
     }
 
-    public function setReplyTo(string $replyTo): Message
+    public function setReplyTo(Address $replyTo): Message
     {
-        $this->replyTo = $replyTo;
+        $this->replyTo = "{$replyTo->fullName()} <$replyTo->emailAddress>";
+
         return $this;
     }
 

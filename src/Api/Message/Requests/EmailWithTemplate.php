@@ -24,15 +24,9 @@ final class EmailWithTemplate
     private array $metadata = [];
     private string $messageStream = "outbound";
 
-    public function setFromAddress(string $from, array $attributes = []): EmailWithTemplate
+    public function setFromAddress(Address $from): EmailWithTemplate
     {
-        $fullName = $from;
-
-        if (isset($attributes['full_name'])) {
-            $fullName = $attributes['full_name'];
-        }
-
-        $this->from = "$fullName <$from>";
+        $this->from = "$from->fullName() <$from->emailAddress>";
 
         return $this;
     }
@@ -61,23 +55,23 @@ final class EmailWithTemplate
         return $this;
     }
 
-    public function addToAddress(string $to): EmailWithTemplate
+    public function addToAddress(Address $to): EmailWithTemplate
     {
-        $this->to = array_merge($this->to, [$to]);
+        $this->to = array_merge($this->to, ["{$to->fullName()} <$to->emailAddress>"]);
 
         return $this;
     }
 
-    public function addCcAddress(string $cc): EmailWithTemplate
+    public function addCcAddress(Address $cc): EmailWithTemplate
     {
-        $this->cc = array_merge($this->to, [$cc]);
+        $this->cc = array_merge($this->to, ["{$cc->fullName()} <$cc->emailAddress>"]);
 
         return $this;
     }
 
-    public function addBccAddress(string $bcc): EmailWithTemplate
+    public function addBccAddress(Address $bcc): EmailWithTemplate
     {
-        $this->bcc = array_merge($this->bcc, [$bcc]);
+        $this->bcc = array_merge($this->bcc, ["{$bcc->fullName()} <$bcc->emailAddress>"]);
 
         return $this;
     }
@@ -89,9 +83,9 @@ final class EmailWithTemplate
         return $this;
     }
 
-    public function setReplyTo(string $replyTo): EmailWithTemplate
+    public function setReplyTo(Address $replyTo): EmailWithTemplate
     {
-        $this->replyTo = $replyTo;
+        $this->replyTo = "{$replyTo->fullName()} <$replyTo->emailAddress>";
         return $this;
     }
 
