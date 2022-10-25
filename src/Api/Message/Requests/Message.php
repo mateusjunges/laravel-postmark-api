@@ -83,7 +83,7 @@ final class Message
 
     public function addReplyTo(Address $replyTo): Message
     {
-        $this->replyTo[] = array_merge($this->replyTo, ["{$replyTo->fullName()} <$replyTo->emailAddress>"]);
+        $this->replyTo = array_merge($this->replyTo, ["{$replyTo->fullName()} <$replyTo->emailAddress>"]);
 
         return $this;
     }
