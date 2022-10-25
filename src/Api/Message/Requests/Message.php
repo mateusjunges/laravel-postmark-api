@@ -15,7 +15,7 @@ final class Message
     private array $bcc = [];
     private array $metadata = [];
     private string $tag = "";
-    private string $replyTo = "";
+    private array $replyTo = [];
     private array $headers = [];
     private bool $trackOpens = true;
     private ?TrackLinksEnum $trackLinks = null;
@@ -81,9 +81,9 @@ final class Message
         return $this;
     }
 
-    public function setReplyTo(Address $replyTo): Message
+    public function addReplyTo(Address $replyTo): Message
     {
-        $this->replyTo = "{$replyTo->fullName()} <$replyTo->emailAddress>";
+        $this->replyTo[] = array_merge($this->replyTo, ["{$replyTo->fullName()} <$replyTo->emailAddress>"]);
 
         return $this;
     }
@@ -179,7 +179,7 @@ final class Message
         return $this->tag;
     }
 
-    public function getReplyTo(): string
+    public function getReplyTo(): array
     {
         return $this->replyTo;
     }
@@ -220,7 +220,7 @@ final class Message
             'HtmlBody' => $this->htmlBody,
             'TextBody' => $this->textBody,
             'Tag' => $this->tag,
-            'ReplyTo' => $this->replyTo,
+            'ReplyTo' => implode(", ", $this->replyTo),
             'Headers' => $this->getPreparedHeaders(),
             'TrackOpens' => $this->trackOpens,
             'Attachments' => $this->attachments,
