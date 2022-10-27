@@ -1,13 +1,13 @@
 <?php
 
-namespace Ixdf\Postmark\Responses\Template;
+namespace InteractionDesignFoundation\Postmark\Responses\Template;
 
 use Illuminate\Contracts\Support\Arrayable;
-use Ixdf\Postmark\Contracts\ApiResponse;
+use InteractionDesignFoundation\Postmark\Contracts\ApiResponse;
 
 class IndexResponse implements ApiResponse, Arrayable
 {
-    /** @var array<int, \Ixdf\Postmark\Responses\Template\CreateResponse> $items */
+    /** @var array<int, \InteractionDesignFoundation\Postmark\Responses\Template\CreateResponse> $items */
     protected array $items = [];
 
     public static function create(array $data): self

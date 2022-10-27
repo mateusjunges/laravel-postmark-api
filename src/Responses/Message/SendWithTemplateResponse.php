@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Responses\Message;
+namespace InteractionDesignFoundation\Postmark\Responses\Message;
 
-use Ixdf\Postmark\Contracts\ApiResponse;
+use InteractionDesignFoundation\Postmark\Contracts\ApiResponse;
 
 final class SendWithTemplateResponse implements ApiResponse
 {

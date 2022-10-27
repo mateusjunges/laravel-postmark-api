@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Api\Message\Requests;
+namespace InteractionDesignFoundation\Postmark\Api\Message\Requests;
 
-use Ixdf\Postmark\Api\Template\Requests\TemplateModel;
-use Ixdf\Postmark\Enums\TrackLinksEnum;
+use InteractionDesignFoundation\Postmark\Api\Template\Requests\TemplateModel;
+use InteractionDesignFoundation\Postmark\Enums\TrackLinksEnum;
 
 final class EmailWithTemplate
 {

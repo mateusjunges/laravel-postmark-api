@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Api\Message\Requests;
+namespace InteractionDesignFoundation\Postmark\Api\Message\Requests;
 
 use Illuminate\Contracts\Support\Arrayable;
 

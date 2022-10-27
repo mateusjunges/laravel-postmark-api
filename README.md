@@ -36,18 +36,18 @@ This API is responsible for sending emails with Postmark through a specific serv
 To get access to the `emails` API, you must use the `messages` method, available with the `Postmark` facade:
 
 ```php
-\Ixdf\Postmark\Facades\Postmark::messages();
+\InteractionDesignFoundation\Postmark\Facades\Postmark::messages();
 ```
 This returns a `MessageApi` contract, which is responsible for handling emails.
 
 #### Sending single emails
-To send single emails, you should use the `send` method, which accepts a `$message` argument, that must be an instance of `Ixdf\Postmark\Api\Message\Requests\Message`:
+To send single emails, you should use the `send` method, which accepts a `$message` argument, that must be an instance of `InteractionDesignFoundation\Postmark\Api\Message\Requests\Message`:
 
 
 ```php
-use Ixdf\Postmark\Facades\Postmark;
-use Ixdf\Postmark\Api\Message\Requests\Message;
-use Ixdf\Postmark\Api\Message\Requests\Address;
+use InteractionDesignFoundation\Postmark\Facades\Postmark;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Message;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Address;
 
 $message = (new Message())
     ->setFromAddress(new Address('from@example.com', 'From Name'))
@@ -55,22 +55,22 @@ $message = (new Message())
     ->setSubject('Email subject')
     ->setTextBody('This is the body of the email, in text format')
     ->setHtmlBody('<html>This is the body of the email, in html format</html>')
-    ->setTrackLinks(\Ixdf\Postmark\Enums\TrackLinksEnum::HTML_AND_TEXT) // Determine which type of links should be tracked
+    ->setTrackLinks(\InteractionDesignFoundation\Postmark\Enums\TrackLinksEnum::HTML_AND_TEXT) // Determine which type of links should be tracked
     ->setOpenTracking(true) // Determine that the openings should be tracked
     ->addTag('Email tag');
  
 
-$response = Postmark::messages()->send($message); // Returns an instance of `\Ixdf\Postmark\Models\Message\SendResponse`
+$response = Postmark::messages()->send($message); // Returns an instance of `\InteractionDesignFoundation\Postmark\Models\Message\SendResponse`
 ```
 
 #### Sending batch emails
 To send batch emails you just need to use a different method from the `MessageApi` class, passing a `Batch` containing all of your messages (up to 500 max) as parameter:
 
 ```php
-use Ixdf\Postmark\Api\Message\Requests\Message;
-use Ixdf\Postmark\Api\Message\Requests\Batch;
-use Ixdf\Postmark\Facades\Postmark;
-use Ixdf\Postmark\Api\Message\Requests\Address;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Message;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Batch;
+use InteractionDesignFoundation\Postmark\Facades\Postmark;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Address;
 
 $message1 = (new Message())
     ->setFromAddress(new Address('from@example.com', 'From Name'))
@@ -78,7 +78,7 @@ $message1 = (new Message())
     ->setSubject('Email subject')
     ->setTextBody('This is the body of the email, in text format')
     ->setHtmlBody('<html>This is the body of the email, in html format</html>')
-    ->setTrackLinks(\Ixdf\Postmark\Enums\TrackLinksEnum::HTML_AND_TEXT) // Determine which type of links should be tracked
+    ->setTrackLinks(\InteractionDesignFoundation\Postmark\Enums\TrackLinksEnum::HTML_AND_TEXT) // Determine which type of links should be tracked
     ->setOpenTracking(true) // Determine that the openings should be tracked
     ->addTag('Email tag');
 
@@ -88,7 +88,7 @@ $message2 = (new Message())
     ->setSubject('Email subject 2')
     ->setTextBody('This is the body of the second email, in text format')
     ->setHtmlBody('<html>This is the body of the second email, in html format</html>')
-    ->setTrackLinks(\Ixdf\Postmark\Enums\TrackLinksEnum::HTML_AND_TEXT) // Determine which type of links should be tracked
+    ->setTrackLinks(\InteractionDesignFoundation\Postmark\Enums\TrackLinksEnum::HTML_AND_TEXT) // Determine which type of links should be tracked
     ->setOpenTracking(true) // Determine that the openings should be tracked
     ->addTag('Email tag');
 
@@ -96,16 +96,16 @@ $batch = new Batch();
 $batch->push($message1);
 $batch->push($message2);
 
-$response = Postmark::messages()->sendBatch($batch); // Returns an Ixdf\Postmark\Models\Message\SendBatchResponse instance
+$response = Postmark::messages()->sendBatch($batch); // Returns an InteractionDesignFoundation\Postmark\Models\Message\SendBatchResponse instance
 ```
 
 #### Sending single messages with Template
-To send single messages using a template, use the `sendWithTemplate` method, which accepts an instance of `Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate` as parameter:
+To send single messages using a template, use the `sendWithTemplate` method, which accepts an instance of `InteractionDesignFoundation\Postmark\Api\Message\Requests\EmailWithTemplate` as parameter:
 
 ```php
-use Ixdf\Postmark\Facades\Postmark;
-use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
-use Ixdf\Postmark\Api\Message\Requests\Address;
+use InteractionDesignFoundation\Postmark\Facades\Postmark;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\EmailWithTemplate;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Address;
 
 $message = (new EmailWithTemplate())
     ->setTemplateId(1234) // The ID of the template to be used 
@@ -114,17 +114,17 @@ $message = (new EmailWithTemplate())
     ->addToAddress(new Address('recipient@example.com'))
     ->addTag('Message tag');
     
-Postmark::messages()->sendWithTemplate($message); // Returns an instance of `Ixdf\Postmark\Models\Message\SendWithTemplateResponse`
+Postmark::messages()->sendWithTemplate($message); // Returns an instance of `InteractionDesignFoundation\Postmark\Models\Message\SendWithTemplateResponse`
 ```
 
 #### Sending batch messages with template
-To send single messages using a template, use the `sendBatchWithTemplate` method, which accepts an instance of `Ixdf\Postmark\Api\Message\Requests\BatchWithTemplate` as parameter:
+To send single messages using a template, use the `sendBatchWithTemplate` method, which accepts an instance of `InteractionDesignFoundation\Postmark\Api\Message\Requests\BatchWithTemplate` as parameter:
 
 ```php
-use Ixdf\Postmark\Facades\Postmark;
-use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
-use Ixdf\Postmark\Api\Message\Requests\BatchWithTemplate;
-use Ixdf\Postmark\Api\Message\Requests\Address;
+use InteractionDesignFoundation\Postmark\Facades\Postmark;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\EmailWithTemplate;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\BatchWithTemplate;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Address;
 
 $message1 = (new EmailWithTemplate())
     ->setTemplateId(1234) // The ID of the template to be used 
@@ -144,7 +144,7 @@ $batch = new BatchWithTemplate();
 $batch->push($message1);
 $batch->push($message2);
 
-Postmark::messages()->sendBatchWithTemplate($batch); // Returns an instance of `Ixdf\Postmark\Models\Message\SendBatchWithTemplateResponse`
+Postmark::messages()->sendBatchWithTemplate($batch); // Returns an instance of `InteractionDesignFoundation\Postmark\Models\Message\SendBatchWithTemplateResponse`
 ```
 
 ### Templates API
@@ -157,17 +157,17 @@ This API lets you manage templates for a specific server.
 To have access to the `templates` API, you must use the `templates` method, available with the `Postmark` facade:
 
 ```php
-\Ixdf\Postmark\Facades\Postmark::templates();
+\InteractionDesignFoundation\Postmark\Facades\Postmark::templates();
 ```
 
 This returns a `TemplateApi` contract, responsible for handling template API calls.
 
 #### Create template
-To create a template, you must use the `create` method, which accepts a `Ixdf\Postmark\Api\Template\Requests\Template` parameter:
+To create a template, you must use the `create` method, which accepts a `InteractionDesignFoundation\Postmark\Api\Template\Requests\Template` parameter:
 
 ```php
-use Ixdf\Postmark\Facades\Postmark;
-use Ixdf\Postmark\Api\Template\Requests\Template;
+use InteractionDesignFoundation\Postmark\Facades\Postmark;
+use InteractionDesignFoundation\Postmark\Api\Template\Requests\Template;
 
 $template = (new Template())
     ->setHtmlBody('<html></html>') //The content to use for the HtmlBody when this template is used to send email.
@@ -176,24 +176,24 @@ $template = (new Template())
     ->setAlias('The alias of the template')
     ->setName('The name of the template');
 
-Postmark::templates()->create($template); // Returns an instance of `Ixdf\Postmark\Models\Template\CreateResponse`
+Postmark::templates()->create($template); // Returns an instance of `InteractionDesignFoundation\Postmark\Models\Template\CreateResponse`
 ```
 
 #### Search a specific template
 You may search for a specific template using the `find` method, which accepts the template id or alias as parameter:
 
 ```php
-use Ixdf\Postmark\Facades\Postmark;
+use InteractionDesignFoundation\Postmark\Facades\Postmark;
 
-Postmark::templates()->find($templateIdOrAlias); // Returns an instance of `Ixdf\Postmark\Models\Template\ShowResponse`
+Postmark::templates()->find($templateIdOrAlias); // Returns an instance of `InteractionDesignFoundation\Postmark\Models\Template\ShowResponse`
 ```
 
 #### Get all templates
 To get a collection with all of your stored templates, use the `all` method:
 
 ```php
-use Ixdf\Postmark\Facades\Postmark;
+use InteractionDesignFoundation\Postmark\Facades\Postmark;
 
-Postmark::templates()->all(); // Returns an instance of `Ixdf\Postmark\Models\Template\IndexResponse`
+Postmark::templates()->all(); // Returns an instance of `InteractionDesignFoundation\Postmark\Models\Template\IndexResponse`
 ```
 

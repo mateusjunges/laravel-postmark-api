@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Exceptions;
+namespace InteractionDesignFoundation\Postmark\Exceptions;
 
 use InvalidArgumentException;
-use Ixdf\Postmark\Contracts\Exception;
+use InteractionDesignFoundation\Postmark\Contracts\Exception;
 
 final class IncorrectApiTokenException extends InvalidArgumentException implements Exception
 {

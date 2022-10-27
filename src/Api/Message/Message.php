@@ -1,19 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Api\Message;
+namespace InteractionDesignFoundation\Postmark\Api\Message;
 
 use GuzzleHttp\RequestOptions;
-use Ixdf\Postmark\Api\Api;
-use Ixdf\Postmark\Api\Message\Requests\Batch;
-use Ixdf\Postmark\Api\Message\Requests\BatchWithTemplate;
-use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
-use Ixdf\Postmark\Api\Message\Requests\Message as MessageRequest;
-use Ixdf\Postmark\Contracts\ApiResponse;
-use Ixdf\Postmark\Contracts\MessageApi;
-use Ixdf\Postmark\Responses\Message\SendResponse;
-use Ixdf\Postmark\Responses\Message\SendBatchResponse;
-use Ixdf\Postmark\Responses\Message\SendBatchWithTemplateResponse;
-use Ixdf\Postmark\Responses\Message\SendWithTemplateResponse;
+use InteractionDesignFoundation\Postmark\Api\Api;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Batch;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\BatchWithTemplate;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\EmailWithTemplate;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Message as MessageRequest;
+use InteractionDesignFoundation\Postmark\Contracts\ApiResponse;
+use InteractionDesignFoundation\Postmark\Contracts\MessageApi;
+use InteractionDesignFoundation\Postmark\Responses\Message\SendResponse;
+use InteractionDesignFoundation\Postmark\Responses\Message\SendBatchResponse;
+use InteractionDesignFoundation\Postmark\Responses\Message\SendBatchWithTemplateResponse;
+use InteractionDesignFoundation\Postmark\Responses\Message\SendWithTemplateResponse;
 
 final class Message extends Api implements MessageApi
 {
@@ -28,10 +28,10 @@ final class Message extends Api implements MessageApi
     /**
      * Send a batch of emails.
      *
-     * @throws \Ixdf\Postmark\Exceptions\IncorrectApiTokenException
-     * @throws \Ixdf\Postmark\Exceptions\ServerErrorException
-     * @throws \Ixdf\Postmark\Exceptions\PostmarkUnavailable
-     * @throws \Ixdf\Postmark\Exceptions\UnknownException
+     * @throws \InteractionDesignFoundation\Postmark\Exceptions\IncorrectApiTokenException
+     * @throws \InteractionDesignFoundation\Postmark\Exceptions\ServerErrorException
+     * @throws \InteractionDesignFoundation\Postmark\Exceptions\PostmarkUnavailable
+     * @throws \InteractionDesignFoundation\Postmark\Exceptions\UnknownException
      */
     public function sendBatch(Batch $batch): ApiResponse
     {

@@ -1,26 +1,26 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Tests\Api;
+namespace InteractionDesignFoundation\Postmark\Tests\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\App;
-use Ixdf\Postmark\Api\Message\Requests\Address;
-use Ixdf\Postmark\Api\Message\Requests\Batch;
-use Ixdf\Postmark\Api\Message\Requests\BatchWithTemplate;
-use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
-use Ixdf\Postmark\Api\Message\Requests\Message;
-use Ixdf\Postmark\Api\Template\Requests\TemplateModel;
-use Ixdf\Postmark\Hydrator\ModelHydrator;
-use Ixdf\Postmark\Responses\ErrorResponse;
-use Ixdf\Postmark\Responses\Message\SendBatchResponse;
-use Ixdf\Postmark\Responses\Message\SendBatchWithTemplateResponse;
-use Ixdf\Postmark\Responses\Message\SendResponse;
-use Ixdf\Postmark\Responses\Message\SendWithTemplateResponse;
-use Ixdf\Postmark\Postmark;
-use Ixdf\Postmark\Tests\TestCase;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Address;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Batch;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\BatchWithTemplate;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\EmailWithTemplate;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Message;
+use InteractionDesignFoundation\Postmark\Api\Template\Requests\TemplateModel;
+use InteractionDesignFoundation\Postmark\Hydrator\ModelHydrator;
+use InteractionDesignFoundation\Postmark\Responses\ErrorResponse;
+use InteractionDesignFoundation\Postmark\Responses\Message\SendBatchResponse;
+use InteractionDesignFoundation\Postmark\Responses\Message\SendBatchWithTemplateResponse;
+use InteractionDesignFoundation\Postmark\Responses\Message\SendResponse;
+use InteractionDesignFoundation\Postmark\Responses\Message\SendWithTemplateResponse;
+use InteractionDesignFoundation\Postmark\Postmark;
+use InteractionDesignFoundation\Postmark\Tests\TestCase;
 
 final class MessageTest extends TestCase
 {

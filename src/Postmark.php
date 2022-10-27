@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark;
+namespace InteractionDesignFoundation\Postmark;
 
 use GuzzleHttp\ClientInterface;
 use Illuminate\Support\Facades\App;
-use Ixdf\Postmark\Contracts\Hydrator;
-use Ixdf\Postmark\Contracts\MessageApi;
-use Ixdf\Postmark\Contracts\PostmarkService;
-use Ixdf\Postmark\Contracts\TemplateApi;
+use InteractionDesignFoundation\Postmark\Contracts\Hydrator;
+use InteractionDesignFoundation\Postmark\Contracts\MessageApi;
+use InteractionDesignFoundation\Postmark\Contracts\PostmarkService;
+use InteractionDesignFoundation\Postmark\Contracts\TemplateApi;
 
 final class Postmark implements PostmarkService
 {
