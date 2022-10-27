@@ -54,7 +54,7 @@ final class Message
         return $this;
     }
 
-    public function addCC(Address $cc): Message
+    public function addCc(Address $cc): Message
     {
         $this->cc = array_merge($this->cc, ["{$cc->fullName()} <$cc->emailAddress>"]);
 
