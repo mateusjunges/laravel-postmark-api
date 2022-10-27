@@ -13,11 +13,11 @@ use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
 use Ixdf\Postmark\Api\Message\Requests\Message;
 use Ixdf\Postmark\Api\Template\Requests\TemplateModel;
 use Ixdf\Postmark\Hydrator\ModelHydrator;
-use Ixdf\Postmark\Models\ErrorResponse;
-use Ixdf\Postmark\Models\Message\SendBatchResponse;
-use Ixdf\Postmark\Models\Message\SendBatchWithTemplateResponse;
-use Ixdf\Postmark\Models\Message\SendResponse;
-use Ixdf\Postmark\Models\Message\SendWithTemplateResponse;
+use Ixdf\Postmark\Responses\ErrorResponse;
+use Ixdf\Postmark\Responses\Message\SendBatchResponse;
+use Ixdf\Postmark\Responses\Message\SendBatchWithTemplateResponse;
+use Ixdf\Postmark\Responses\Message\SendResponse;
+use Ixdf\Postmark\Responses\Message\SendWithTemplateResponse;
 use Ixdf\Postmark\Postmark;
 use Ixdf\Postmark\Tests\TestCase;
 

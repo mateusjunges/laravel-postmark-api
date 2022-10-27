@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Models\Message;
+namespace Ixdf\Postmark\Responses\Message;
 
 use Ixdf\Postmark\Contracts\ApiResponse;
-use Ixdf\Postmark\Models\ErrorResponse;
+use Ixdf\Postmark\Responses\ErrorResponse;
 
 final class SendBatchResponse implements ApiResponse
 {

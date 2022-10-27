@@ -7,10 +7,10 @@ use Ixdf\Postmark\Api\Api;
 use Ixdf\Postmark\Api\Template\Requests\Template as TemplateRequest;
 use Ixdf\Postmark\Contracts\ApiResponse;
 use Ixdf\Postmark\Contracts\TemplateApi;
-use Ixdf\Postmark\Models\Template\ShowResponse;
-use Ixdf\Postmark\Models\Template\IndexResponse;
-use Ixdf\Postmark\Models\Template\DeletedResponse;
-use Ixdf\Postmark\Models\Template\CreateResponse;
+use Ixdf\Postmark\Responses\Template\ShowResponse;
+use Ixdf\Postmark\Responses\Template\IndexResponse;
+use Ixdf\Postmark\Responses\Template\DeletedResponse;
+use Ixdf\Postmark\Responses\Template\CreateResponse;
 
 final class Template extends Api implements TemplateApi
 {

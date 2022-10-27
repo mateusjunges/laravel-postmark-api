@@ -11,7 +11,7 @@ use Ixdf\Postmark\Exceptions\IncorrectApiTokenException;
 use Ixdf\Postmark\Exceptions\PostmarkUnavailable;
 use Ixdf\Postmark\Exceptions\ServerErrorException;
 use Ixdf\Postmark\Exceptions\UnknownException;
-use Ixdf\Postmark\Models\ErrorResponse;
+use Ixdf\Postmark\Responses\ErrorResponse;
 use Psr\Http\Message\ResponseInterface;
 
 abstract class Api

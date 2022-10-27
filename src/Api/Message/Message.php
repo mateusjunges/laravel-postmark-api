@@ -10,16 +10,14 @@ use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
 use Ixdf\Postmark\Api\Message\Requests\Message as MessageRequest;
 use Ixdf\Postmark\Contracts\ApiResponse;
 use Ixdf\Postmark\Contracts\MessageApi;
-use Ixdf\Postmark\Models\Message\SendResponse;
-use Ixdf\Postmark\Models\Message\SendBatchResponse;
-use Ixdf\Postmark\Models\Message\SendBatchWithTemplateResponse;
-use Ixdf\Postmark\Models\Message\SendWithTemplateResponse;
+use Ixdf\Postmark\Responses\Message\SendResponse;
+use Ixdf\Postmark\Responses\Message\SendBatchResponse;
+use Ixdf\Postmark\Responses\Message\SendBatchWithTemplateResponse;
+use Ixdf\Postmark\Responses\Message\SendWithTemplateResponse;
 
 final class Message extends Api implements MessageApi
 {
-    /**
-     * Send a given message.
-     */
+    /** Send a given message.*/
     public function send(MessageRequest $message): ApiResponse
     {
         return $this->request('POST', '/email', SendResponse::class, [
