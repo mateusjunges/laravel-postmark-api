@@ -118,7 +118,7 @@ final class Message
         return $this;
     }
 
-    private function getPreparedHeaders(): array
+    public function getPreparedHeaders(): array
     {
         $response = [];
 
@@ -134,9 +134,9 @@ final class Message
         return $response;
     }
 
-    public function getToAddress(): string
+    public function getToAddress(): array
     {
-        return implode(',', $this->to);
+        return $this->to;
     }
 
     public function getFrom(): string
@@ -220,7 +220,7 @@ final class Message
             'HtmlBody' => $this->htmlBody,
             'TextBody' => $this->textBody,
             'Tag' => $this->tag,
-            'ReplyTo' => implode(", ", $this->replyTo),
+            'ReplyTo' => implode(',', $this->replyTo),
             'Headers' => $this->getPreparedHeaders(),
             'TrackOpens' => $this->trackOpens,
             'Attachments' => $this->attachments,
