@@ -1,5 +1,5 @@
 {
-    "name": "ixdf/laravel-postmark-api",
+    "name": "interaction-design-foundation/laravel-postmark-api",
     "description": "A Postmark API Client for Laravel projects",
     "type": "library",
     "license": "MIT",
