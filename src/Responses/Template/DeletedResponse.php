@@ -1,9 +1,9 @@
 <?php
 
-namespace Ixdf\Postmark\Models\Template;
+namespace InteractionDesignFoundation\Postmark\Responses\Template;
 
 use Illuminate\Contracts\Support\Arrayable;
-use Ixdf\Postmark\Contracts\ApiResponse;
+use InteractionDesignFoundation\Postmark\Contracts\ApiResponse;
 
 final class DeletedResponse implements ApiResponse, Arrayable
 {

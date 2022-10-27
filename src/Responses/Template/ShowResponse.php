@@ -1,8 +1,8 @@
 <?php
 
-namespace Ixdf\Postmark\Models\Template;
+namespace InteractionDesignFoundation\Postmark\Responses\Template;
 
-use Ixdf\Postmark\Contracts\ApiResponse;
+use InteractionDesignFoundation\Postmark\Contracts\ApiResponse;
 
 final class ShowResponse implements ApiResponse
 {

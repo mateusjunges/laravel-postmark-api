@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Hydrator;
+namespace InteractionDesignFoundation\Postmark\Hydrator;
 
-use Ixdf\Postmark\Contracts\ApiResponse;
-use Ixdf\Postmark\Contracts\Hydrator;
-use Ixdf\Postmark\Exceptions\HydrationException;
+use InteractionDesignFoundation\Postmark\Contracts\ApiResponse;
+use InteractionDesignFoundation\Postmark\Contracts\Hydrator;
+use InteractionDesignFoundation\Postmark\Exceptions\HydrationException;
 use Psr\Http\Message\ResponseInterface;
 
 final class ModelHydrator implements Hydrator

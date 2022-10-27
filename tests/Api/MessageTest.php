@@ -1,25 +1,26 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Tests\Api;
+namespace InteractionDesignFoundation\Postmark\Tests\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\App;
-use Ixdf\Postmark\Api\Message\Requests\Batch;
-use Ixdf\Postmark\Api\Message\Requests\BatchWithTemplate;
-use Ixdf\Postmark\Api\Message\Requests\EmailWithTemplate;
-use Ixdf\Postmark\Api\Message\Requests\Message;
-use Ixdf\Postmark\Api\Template\Requests\TemplateModel;
-use Ixdf\Postmark\Hydrator\ModelHydrator;
-use Ixdf\Postmark\Models\ErrorResponse;
-use Ixdf\Postmark\Models\Message\SendBatchResponse;
-use Ixdf\Postmark\Models\Message\SendBatchWithTemplateResponse;
-use Ixdf\Postmark\Models\Message\SendResponse;
-use Ixdf\Postmark\Models\Message\SendWithTemplateResponse;
-use Ixdf\Postmark\Postmark;
-use Ixdf\Postmark\Tests\TestCase;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Address;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Batch;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\BatchWithTemplate;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\EmailWithTemplate;
+use InteractionDesignFoundation\Postmark\Api\Message\Requests\Message;
+use InteractionDesignFoundation\Postmark\Api\Template\Requests\TemplateModel;
+use InteractionDesignFoundation\Postmark\Hydrator\ModelHydrator;
+use InteractionDesignFoundation\Postmark\Responses\ErrorResponse;
+use InteractionDesignFoundation\Postmark\Responses\Message\SendBatchResponse;
+use InteractionDesignFoundation\Postmark\Responses\Message\SendBatchWithTemplateResponse;
+use InteractionDesignFoundation\Postmark\Responses\Message\SendResponse;
+use InteractionDesignFoundation\Postmark\Responses\Message\SendWithTemplateResponse;
+use InteractionDesignFoundation\Postmark\Postmark;
+use InteractionDesignFoundation\Postmark\Tests\TestCase;
 
 final class MessageTest extends TestCase
 {
@@ -33,8 +34,8 @@ final class MessageTest extends TestCase
         $client = $this->getPostmarkClient();
 
         $message = (new Message())
-            ->setFromAddress('test@example.com', ['full_name' => 'Test'])
-            ->addToAddress('receiver@example.com')
+            ->setFromAddress(new Address('test@example.com', 'Test'))
+            ->addToAddress(new Address('receiver@example.com'))
             ->setSubject('Subject');
 
         $response = $client->messages()->send($message);
@@ -54,8 +55,8 @@ final class MessageTest extends TestCase
         ));
 
         $message = (new Message())
-            ->setFromAddress('test@example.com', ['full_name' => 'Test'])
-            ->addToAddress('receiver@example.com')
+            ->setFromAddress(new Address('test@example.com', 'Test'))
+            ->addToAddress(new Address('receiver@example.com'))
             ->setSubject('Subject');
 
         $response = $this->getPostmarkClient()->messages()->send($message);
@@ -69,13 +70,13 @@ final class MessageTest extends TestCase
     public function it_can_send_batch_messages(): void
     {
         $message1 = (new Message())
-            ->setFromAddress('test@example.com', ['full_name' => 'Test'])
-            ->addToAddress('receiver@example.com')
+            ->setFromAddress(new Address('test@example.com', 'Test'))
+            ->addToAddress(new Address('receiver@example.com'))
             ->setSubject('Subject');
 
         $message2 = (new Message())
-            ->setFromAddress('test2@example.com', ['full_name' => 'Test 2'])
-            ->addToAddress('receiver2@example.com')
+            ->setFromAddress(new Address('test2@example.com', 'Test 2'))
+            ->addToAddress(new Address('receiver2@example.com'))
             ->setSubject('Subject 2');
 
         $batch = new Batch();
@@ -103,8 +104,8 @@ final class MessageTest extends TestCase
         $this->mockOneRequest('request', $this->sendWithTemplateMock());
 
         $emailWithTemplate = new EmailWithTemplate();
-        $emailWithTemplate->addToAddress('receiver@example.com');
-        $emailWithTemplate->setFromAddress('sender@example.com');
+        $emailWithTemplate->addToAddress(new Address('receiver@example.com'));
+        $emailWithTemplate->setFromAddress(new Address('sender@example.com'));
         $emailWithTemplate->setTemplateId(1234);
         $emailWithTemplate->setOpenTracking(true);
         $emailWithTemplate->setTemplateModel(new TemplateModel());
@@ -118,15 +119,15 @@ final class MessageTest extends TestCase
     public function it_can_send_batches_with_template(): void
     {
         $emailWithTemplate = new EmailWithTemplate();
-        $emailWithTemplate->addToAddress('receiver@example.com');
-        $emailWithTemplate->setFromAddress('sender@example.com');
+        $emailWithTemplate->addToAddress(new Address('receiver@example.com'));
+        $emailWithTemplate->setFromAddress(new Address('sender@example.com'));
         $emailWithTemplate->setTemplateId(1234);
         $emailWithTemplate->setOpenTracking(true);
         $emailWithTemplate->setTemplateModel(new TemplateModel());
 
         $email2WithTemplate = new EmailWithTemplate();
-        $email2WithTemplate->addToAddress('receiver2@example.com');
-        $email2WithTemplate->setFromAddress('sender2@example.com');
+        $email2WithTemplate->addToAddress(new Address('receiver2@example.com'));
+        $email2WithTemplate->setFromAddress(new Address('sender2@example.com'));
         $email2WithTemplate->setTemplateId(1234);
         $email2WithTemplate->setOpenTracking(true);
         $email2WithTemplate->setTemplateModel(new TemplateModel());

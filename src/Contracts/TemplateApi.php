@@ -1,8 +1,8 @@
 <?php
 
-namespace Ixdf\Postmark\Contracts;
+namespace InteractionDesignFoundation\Postmark\Contracts;
 
-use Ixdf\Postmark\Api\Template\Requests\Template;
+use InteractionDesignFoundation\Postmark\Api\Template\Requests\Template;
 
 interface TemplateApi
 {

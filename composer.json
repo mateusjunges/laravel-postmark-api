@@ -5,12 +5,12 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Ixdf\\Postmark\\": "src/"
+            "InteractionDesignFoundation\\Postmark\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ixdf\\Postmark\\Tests\\": "tests/"
+            "InteractionDesignFoundation\\Postmark\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -35,7 +35,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Ixdf\\Postmark\\Providers\\PostmarkServiceProvider"
+                "InteractionDesignFoundation\\Postmark\\Providers\\PostmarkServiceProvider"
             ]
         }
     }

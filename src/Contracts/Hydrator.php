@@ -1,6 +1,6 @@
 <?php
 
-namespace Ixdf\Postmark\Contracts;
+namespace InteractionDesignFoundation\Postmark\Contracts;
 
 use Psr\Http\Message\ResponseInterface;
 

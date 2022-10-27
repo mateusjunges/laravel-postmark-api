@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Api\Message\Requests;
+namespace InteractionDesignFoundation\Postmark\Api\Message\Requests;
 
-use Ixdf\Postmark\Enums\TrackLinksEnum;
+use InteractionDesignFoundation\Postmark\Enums\TrackLinksEnum;
 
 final class Message
 {
@@ -15,27 +15,23 @@ final class Message
     private array $bcc = [];
     private array $metadata = [];
     private string $tag = "";
-    private string $replyTo = "";
+    private array $replyTo = [];
     private array $headers = [];
     private bool $trackOpens = true;
     private ?TrackLinksEnum $trackLinks = null;
     private string $messageStream = 'broadcast';
     private array $attachments = [];
 
-    public function setFromAddress(string $from, array $options = []): Message
+    public function setFromAddress(Address $from): Message
     {
-        if (isset($options['full_name'])) {
-            $this->from = $options['full_name'] . " <$from>";
-        } else {
-            $this->from = "$from <$from>";
-        }
+        $this->from = "{$from->fullName()} <$from->emailAddress>";
 
         return $this;
     }
 
-    public function addToAddress(string $to): Message
+    public function addToAddress(Address $to): Message
     {
-        $this->to = array_merge($this->to, [$to]);
+        $this->to = array_merge($this->to, ["{$to->fullName()} <$to->emailAddress>"]);
 
         return $this;
     }
@@ -58,16 +54,16 @@ final class Message
         return $this;
     }
 
-    public function addCC(array $cc): Message
+    public function addCc(Address $cc): Message
     {
-        $this->cc = array_merge($this->cc, [$cc]);
+        $this->cc = array_merge($this->cc, ["{$cc->fullName()} <$cc->emailAddress>"]);
 
         return $this;
     }
 
-    public function addBcc(array $bcc): Message
+    public function addBcc(Address $bcc): Message
     {
-        $this->bcc = array_merge($this->bcc, [$bcc]);
+        $this->bcc = array_merge($this->bcc, ["{$bcc->fullName()} <$bcc->emailAddress>"]);
 
         return $this;
     }
@@ -85,9 +81,10 @@ final class Message
         return $this;
     }
 
-    public function setReplyTo(string $replyTo): Message
+    public function addReplyTo(Address $replyTo): Message
     {
-        $this->replyTo = $replyTo;
+        $this->replyTo = array_merge($this->replyTo, ["{$replyTo->fullName()} <$replyTo->emailAddress>"]);
+
         return $this;
     }
 
@@ -121,7 +118,7 @@ final class Message
         return $this;
     }
 
-    private function getPreparedHeaders(): array
+    public function getPreparedHeaders(): array
     {
         $response = [];
 
@@ -137,9 +134,9 @@ final class Message
         return $response;
     }
 
-    public function getToAddress(): string
+    public function getToAddress(): array
     {
-        return implode(',', $this->to);
+        return $this->to;
     }
 
     public function getFrom(): string
@@ -182,7 +179,7 @@ final class Message
         return $this->tag;
     }
 
-    public function getReplyTo(): string
+    public function getReplyTo(): array
     {
         return $this->replyTo;
     }
@@ -223,7 +220,7 @@ final class Message
             'HtmlBody' => $this->htmlBody,
             'TextBody' => $this->textBody,
             'Tag' => $this->tag,
-            'ReplyTo' => $this->replyTo,
+            'ReplyTo' => implode(',', $this->replyTo),
             'Headers' => $this->getPreparedHeaders(),
             'TrackOpens' => $this->trackOpens,
             'Attachments' => $this->attachments,

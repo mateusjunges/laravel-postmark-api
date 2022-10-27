@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Ixdf\Postmark\Tests\Api;
+namespace InteractionDesignFoundation\Postmark\Tests\Api;
 
 trait HasMessageMocks
 {
