@@ -36,10 +36,10 @@ final class Attachment implements Arrayable
     public static function fromFile(string $filePath, string $attachmentName, string $mimeType = 'application/octet-stream', string $contentId = null): self
     {
         return new self(
-            base64_encode(file_get_contents($filePath)),
             $attachmentName,
+            base64_encode(file_get_contents($filePath)),
             $mimeType,
-            $contentId
+            $contentId,
         );
     }
 
