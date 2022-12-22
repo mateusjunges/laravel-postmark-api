@@ -2,10 +2,12 @@
 
 namespace InteractionDesignFoundation\Postmark\Api\Message\Requests;
 
+use Illuminate\Support\Traits\Conditionable;
 use InteractionDesignFoundation\Postmark\Enums\TrackLinksEnum;
 
 final class Message
 {
+    use Conditionable;
     private string $from;
     private array $to = [];
     private string $subject;
