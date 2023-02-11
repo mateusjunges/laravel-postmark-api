@@ -26,11 +26,6 @@ jobs:
           extensions: mbstring, zip
           coverage: pcov
 
-      - name: Add SSH Key
-        uses: webfactory/ssh-agent@v0.4.1
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
-
       - name: Install Composer dependencies
         run: |
           composer require "laravel/framework:${{ matrix.laravel }}" --no-interaction --no-update
