@@ -38,5 +38,10 @@
                 "InteractionDesignFoundation\\Postmark\\Providers\\PostmarkServiceProvider"
             ]
         }
+    },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
     }
+  }
 }
