@@ -27,7 +27,7 @@
     },
     "require-dev": {
         "symfony/http-client": "^6.1",
-        "orchestra/testbench": "^7.9",
+        "orchestra/testbench": "^7.9|^8.0",
         "phpunit/phpunit": "^9.5",
         "phpstan/phpstan": "^1.8",
         "vimeo/psalm": "^4.28"
