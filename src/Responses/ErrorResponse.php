@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Responses;
+namespace Junges\Postmark\Responses;
 
-use InteractionDesignFoundation\Postmark\Contracts\ApiResponse;
+use Junges\Postmark\Contracts\ApiResponse;
 
 final class ErrorResponse implements ApiResponse
 {

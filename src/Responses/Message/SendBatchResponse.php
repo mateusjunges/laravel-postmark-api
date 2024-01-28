@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Responses\Message;
+namespace Junges\Postmark\Responses\Message;
 
-use InteractionDesignFoundation\Postmark\Contracts\ApiResponse;
-use InteractionDesignFoundation\Postmark\Responses\ErrorResponse;
+use Junges\Postmark\Contracts\ApiResponse;
+use Junges\Postmark\Responses\ErrorResponse;
 
 final class SendBatchResponse implements ApiResponse
 {

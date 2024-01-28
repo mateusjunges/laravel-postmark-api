@@ -1,11 +1,11 @@
 <?php
 
-namespace InteractionDesignFoundation\Postmark\Contracts;
+namespace Junges\Postmark\Contracts;
 
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\Batch;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\BatchWithTemplate;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\EmailWithTemplate;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\Message;
+use Junges\Postmark\Api\Message\Requests\Batch;
+use Junges\Postmark\Api\Message\Requests\BatchWithTemplate;
+use Junges\Postmark\Api\Message\Requests\EmailWithTemplate;
+use Junges\Postmark\Api\Message\Requests\Message;
 
 interface MessageApi
 {

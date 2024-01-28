@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Support\Testing\Fakes;
+namespace Junges\Postmark\Support\Testing\Fakes;
 
 use BadMethodCallException;
 use Illuminate\Support\Collection;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\Batch;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\BatchWithTemplate;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\EmailWithTemplate;
-use InteractionDesignFoundation\Postmark\Contracts\MessageApi;
-use InteractionDesignFoundation\Postmark\Contracts\PostmarkService;
-use InteractionDesignFoundation\Postmark\Contracts\TemplateApi;
+use Junges\Postmark\Api\Message\Requests\Batch;
+use Junges\Postmark\Api\Message\Requests\BatchWithTemplate;
+use Junges\Postmark\Api\Message\Requests\EmailWithTemplate;
+use Junges\Postmark\Contracts\MessageApi;
+use Junges\Postmark\Contracts\PostmarkService;
+use Junges\Postmark\Contracts\TemplateApi;
 use PHPUnit\Framework\Assert as PHPUnit;
 
 final class PostmarkFake implements PostmarkService

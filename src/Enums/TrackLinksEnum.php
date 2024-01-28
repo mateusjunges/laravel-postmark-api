@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Enums;
+namespace Junges\Postmark\Enums;
 
 enum TrackLinksEnum: string
 {

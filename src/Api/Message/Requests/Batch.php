@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Api\Message\Requests;
+namespace Junges\Postmark\Api\Message\Requests;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
-use InteractionDesignFoundation\Postmark\Concerns\InteractWithBatches;
-use InteractionDesignFoundation\Postmark\Exceptions\TooManyRecipients;
+use Junges\Postmark\Concerns\InteractWithBatches;
+use Junges\Postmark\Exceptions\TooManyRecipients;
 
 final class Batch implements Arrayable, Jsonable
 {
@@ -13,11 +13,11 @@ final class Batch implements Arrayable, Jsonable
 
     private const MAX_RECIPIENTS = 500;
 
-    /** @var array<int, \InteractionDesignFoundation\Postmark\Api\Message\Requests\Message> $items */
+    /** @var array<int, \Junges\Postmark\Api\Message\Requests\Message> $items */
     private array $items = [];
 
     /**
-     * @throws \InteractionDesignFoundation\Postmark\Exceptions\TooManyRecipients
+     * @throws \Junges\Postmark\Exceptions\TooManyRecipients
      */
     public function push(Message $message): self
     {

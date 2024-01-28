@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Api\Template;
+namespace Junges\Postmark\Api\Template;
 
 use GuzzleHttp\RequestOptions;
-use InteractionDesignFoundation\Postmark\Api\Api;
-use InteractionDesignFoundation\Postmark\Api\Template\Requests\Template as TemplateRequest;
-use InteractionDesignFoundation\Postmark\Contracts\ApiResponse;
-use InteractionDesignFoundation\Postmark\Contracts\TemplateApi;
-use InteractionDesignFoundation\Postmark\Responses\Template\ShowResponse;
-use InteractionDesignFoundation\Postmark\Responses\Template\IndexResponse;
-use InteractionDesignFoundation\Postmark\Responses\Template\DeletedResponse;
-use InteractionDesignFoundation\Postmark\Responses\Template\CreateResponse;
+use Junges\Postmark\Api\Api;
+use Junges\Postmark\Api\Template\Requests\Template as TemplateRequest;
+use Junges\Postmark\Contracts\ApiResponse;
+use Junges\Postmark\Contracts\TemplateApi;
+use Junges\Postmark\Responses\Template\ShowResponse;
+use Junges\Postmark\Responses\Template\IndexResponse;
+use Junges\Postmark\Responses\Template\DeletedResponse;
+use Junges\Postmark\Responses\Template\CreateResponse;
 
 final class Template extends Api implements TemplateApi
 {

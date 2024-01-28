@@ -1,11 +1,11 @@
 <?php
 
-namespace InteractionDesignFoundation\Postmark\Tests;
+namespace Junges\Postmark\Tests;
 
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
-use InteractionDesignFoundation\Postmark\Providers\PostmarkServiceProvider;
+use Junges\Postmark\Providers\PostmarkServiceProvider;
 use Mockery as m;
 use Orchestra\Testbench\TestCase as Orchestra;
 

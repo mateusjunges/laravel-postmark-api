@@ -23,7 +23,7 @@
    @see https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-parts-of-a-file
 -->
 
-<ruleset name="IxDF-web">
+<ruleset name="Laravel-Postmark-API">
     <description>Project-level coding standard</description>
     <arg name="extensions" value="php"/><!--CS can also check js, inc, lib file - omit them-->
     <arg name="report-width" value="120"/>
@@ -65,7 +65,7 @@
     <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName"><!--follow the PSR-0 or PSR-4 autoloading standards-->
         <properties>
             <property name="rootNamespaces" type="array">
-                <element key="src" value="Ixdf/Postmark"/>
+                <element key="src" value="Junges/Postmark"/>
             </property>
         </properties>
         <severity>6</severity>

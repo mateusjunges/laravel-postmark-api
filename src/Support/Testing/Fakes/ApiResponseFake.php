@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Support\Testing\Fakes;
+namespace Junges\Postmark\Support\Testing\Fakes;
 
-use InteractionDesignFoundation\Postmark\Contracts\ApiResponse;
+use Junges\Postmark\Contracts\ApiResponse;
 
 final class ApiResponseFake implements ApiResponse
 {

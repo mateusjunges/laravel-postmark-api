@@ -1,19 +1,19 @@
 <?php
 
-namespace InteractionDesignFoundation\Postmark\Providers;
+namespace Junges\Postmark\Providers;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use InteractionDesignFoundation\Postmark\Api\Message\Message;
-use InteractionDesignFoundation\Postmark\Api\Template\Template;
-use InteractionDesignFoundation\Postmark\Contracts\MessageApi;
-use InteractionDesignFoundation\Postmark\Contracts\PostmarkService;
-use InteractionDesignFoundation\Postmark\Contracts\TemplateApi;
-use InteractionDesignFoundation\Postmark\Hydrator\ModelHydrator;
-use InteractionDesignFoundation\Postmark\Postmark;
+use Junges\Postmark\Api\Message\Message;
+use Junges\Postmark\Api\Template\Template;
+use Junges\Postmark\Contracts\MessageApi;
+use Junges\Postmark\Contracts\PostmarkService;
+use Junges\Postmark\Contracts\TemplateApi;
+use Junges\Postmark\Hydrator\ModelHydrator;
+use Junges\Postmark\Postmark;
 
 class PostmarkServiceProvider extends ServiceProvider
 {

@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Support\Testing\Fakes;
+namespace Junges\Postmark\Support\Testing\Fakes;
 
 use Closure;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\Batch;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\BatchWithTemplate;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\EmailWithTemplate;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\Message;
-use InteractionDesignFoundation\Postmark\Contracts\ApiResponse;
-use InteractionDesignFoundation\Postmark\Contracts\MessageApi;
+use Junges\Postmark\Api\Message\Requests\Batch;
+use Junges\Postmark\Api\Message\Requests\BatchWithTemplate;
+use Junges\Postmark\Api\Message\Requests\EmailWithTemplate;
+use Junges\Postmark\Api\Message\Requests\Message;
+use Junges\Postmark\Contracts\ApiResponse;
+use Junges\Postmark\Contracts\MessageApi;
 
 final class MessagesApiFake implements MessageApi
 {

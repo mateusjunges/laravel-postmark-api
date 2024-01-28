@@ -1,26 +1,26 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Tests\Api;
+namespace Junges\Postmark\Tests\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Facades\App;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\Address;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\Batch;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\BatchWithTemplate;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\EmailWithTemplate;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\Message;
-use InteractionDesignFoundation\Postmark\Api\Template\Requests\TemplateModel;
-use InteractionDesignFoundation\Postmark\Hydrator\ModelHydrator;
-use InteractionDesignFoundation\Postmark\Responses\ErrorResponse;
-use InteractionDesignFoundation\Postmark\Responses\Message\SendBatchResponse;
-use InteractionDesignFoundation\Postmark\Responses\Message\SendBatchWithTemplateResponse;
-use InteractionDesignFoundation\Postmark\Responses\Message\SendResponse;
-use InteractionDesignFoundation\Postmark\Responses\Message\SendWithTemplateResponse;
-use InteractionDesignFoundation\Postmark\Postmark;
-use InteractionDesignFoundation\Postmark\Tests\TestCase;
+use Junges\Postmark\Api\Message\Requests\Address;
+use Junges\Postmark\Api\Message\Requests\Batch;
+use Junges\Postmark\Api\Message\Requests\BatchWithTemplate;
+use Junges\Postmark\Api\Message\Requests\EmailWithTemplate;
+use Junges\Postmark\Api\Message\Requests\Message;
+use Junges\Postmark\Api\Template\Requests\TemplateModel;
+use Junges\Postmark\Hydrator\ModelHydrator;
+use Junges\Postmark\Responses\ErrorResponse;
+use Junges\Postmark\Responses\Message\SendBatchResponse;
+use Junges\Postmark\Responses\Message\SendBatchWithTemplateResponse;
+use Junges\Postmark\Responses\Message\SendResponse;
+use Junges\Postmark\Responses\Message\SendWithTemplateResponse;
+use Junges\Postmark\Postmark;
+use Junges\Postmark\Tests\TestCase;
 
 final class MessageTest extends TestCase
 {

@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Tests\Api\Message\Requests;
+namespace Junges\Postmark\Tests\Api\Message\Requests;
 
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\Address;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\Attachment;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\Message;
-use InteractionDesignFoundation\Postmark\Enums\TrackLinksEnum;
-use InteractionDesignFoundation\Postmark\Tests\TestCase;
+use Junges\Postmark\Api\Message\Requests\Address;
+use Junges\Postmark\Api\Message\Requests\Attachment;
+use Junges\Postmark\Api\Message\Requests\Message;
+use Junges\Postmark\Enums\TrackLinksEnum;
+use Junges\Postmark\Tests\TestCase;
 
 final class MessageTest extends TestCase
 {

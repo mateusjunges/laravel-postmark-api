@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Api\Message\Requests;
+namespace Junges\Postmark\Api\Message\Requests;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Support\Jsonable;
-use InteractionDesignFoundation\Postmark\Concerns\InteractWithBatches;
-use InteractionDesignFoundation\Postmark\Exceptions\TooManyRecipients;
+use Junges\Postmark\Concerns\InteractWithBatches;
+use Junges\Postmark\Exceptions\TooManyRecipients;
 
 final class BatchWithTemplate implements Arrayable, Jsonable
 {
@@ -16,7 +16,7 @@ final class BatchWithTemplate implements Arrayable, Jsonable
     private ?string $templateAlias = null;
     private ?int $templateId = null;
 
-    /** @var array<int, \InteractionDesignFoundation\Postmark\Api\Message\Requests\EmailWithTemplate> $items */
+    /** @var array<int, \Junges\Postmark\Api\Message\Requests\EmailWithTemplate> $items */
     private array $items = [];
 
     public function push(EmailWithTemplate $emailWithTemplate): self

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Tests\Api;
+namespace Junges\Postmark\Tests\Api;
 
 trait HasMessageMocks
 {
@@ -22,7 +22,7 @@ JSON;
         return <<<JSON
         {
             "ErrorCode": 400,
-            "Message": "The 'From' address you supplied (test <test@ixdf.com>) is not a Sender Signature on your account. Please add and confirm this address in order to be able to use it in the 'From' field of your messages."
+            "Message": "The 'From' address you supplied (test <mateus@junges.dev>) is not a Sender Signature on your account. Please add and confirm this address in order to be able to use it in the 'From' field of your messages."
         }
 JSON;
 

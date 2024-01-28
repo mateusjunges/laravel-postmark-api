@@ -1,18 +1,18 @@
 <?php
 
-namespace InteractionDesignFoundation\Postmark\Facades;
+namespace Junges\Postmark\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\Batch;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\BatchWithTemplate;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\EmailWithTemplate;
-use InteractionDesignFoundation\Postmark\Api\Message\Requests\Message;
-use InteractionDesignFoundation\Postmark\Contracts\PostmarkService;
-use InteractionDesignFoundation\Postmark\Support\Testing\Fakes\PostmarkFake;
+use Junges\Postmark\Api\Message\Requests\Batch;
+use Junges\Postmark\Api\Message\Requests\BatchWithTemplate;
+use Junges\Postmark\Api\Message\Requests\EmailWithTemplate;
+use Junges\Postmark\Api\Message\Requests\Message;
+use Junges\Postmark\Contracts\PostmarkService;
+use Junges\Postmark\Support\Testing\Fakes\PostmarkFake;
 
 /**
- * @method static \InteractionDesignFoundation\Postmark\Contracts\MessageApi messages
- * @method static \InteractionDesignFoundation\Postmark\Contracts\TemplateApi templates
+ * @method static \Junges\Postmark\Contracts\MessageApi messages
+ * @method static \Junges\Postmark\Contracts\TemplateApi templates
  * @method static void assertMessageSent(Message $message, callable $callback = null)
  * @method static void assertBatchSent(\Closure $callback = null)
  * @method static void assertMessageSentWithTemplate(\Closure $callback = null)

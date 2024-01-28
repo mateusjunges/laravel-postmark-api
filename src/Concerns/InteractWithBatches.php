@@ -1,6 +1,6 @@
 <?php
 
-namespace InteractionDesignFoundation\Postmark\Concerns;
+namespace Junges\Postmark\Concerns;
 
 trait InteractWithBatches
 {

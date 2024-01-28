@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Api\Message\Requests;
+namespace Junges\Postmark\Api\Message\Requests;
 
 use Illuminate\Support\Traits\Conditionable;
-use InteractionDesignFoundation\Postmark\Enums\TrackLinksEnum;
+use Junges\Postmark\Enums\TrackLinksEnum;
 
 final class Message
 {

@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Exceptions;
+namespace Junges\Postmark\Exceptions;
 
-use InteractionDesignFoundation\Postmark\Contracts\Exception;
+use Junges\Postmark\Contracts\Exception;
 use RuntimeException;
 
 final class TooManyRecipients extends RuntimeException implements Exception

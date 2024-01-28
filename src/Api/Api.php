@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace InteractionDesignFoundation\Postmark\Api;
+namespace Junges\Postmark\Api;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ClientException;
-use InteractionDesignFoundation\Postmark\Contracts\ApiResponse;
-use InteractionDesignFoundation\Postmark\Contracts\Hydrator;
-use InteractionDesignFoundation\Postmark\Exceptions\HydrationException;
-use InteractionDesignFoundation\Postmark\Exceptions\IncorrectApiTokenException;
-use InteractionDesignFoundation\Postmark\Exceptions\PostmarkUnavailable;
-use InteractionDesignFoundation\Postmark\Exceptions\ServerErrorException;
-use InteractionDesignFoundation\Postmark\Exceptions\UnknownException;
-use InteractionDesignFoundation\Postmark\Responses\ErrorResponse;
+use Junges\Postmark\Contracts\ApiResponse;
+use Junges\Postmark\Contracts\Hydrator;
+use Junges\Postmark\Exceptions\HydrationException;
+use Junges\Postmark\Exceptions\IncorrectApiTokenException;
+use Junges\Postmark\Exceptions\PostmarkUnavailable;
+use Junges\Postmark\Exceptions\ServerErrorException;
+use Junges\Postmark\Exceptions\UnknownException;
+use Junges\Postmark\Responses\ErrorResponse;
 use Psr\Http\Message\ResponseInterface;
 
 abstract class Api
@@ -26,7 +26,7 @@ abstract class Api
      *
      * @param \Psr\Http\Message\ResponseInterface $response
      * @param class-string $hydratorClass
-     * @return \InteractionDesignFoundation\Postmark\Contracts\ApiResponse
+     * @return \Junges\Postmark\Contracts\ApiResponse
      */
     private function parseResponse(ResponseInterface $response, string $hydratorClass): ApiResponse
     {

@@ -1,16 +1,16 @@
 {
-    "name": "interaction-design-foundation/laravel-postmark-api",
+    "name": "mateusjunges/laravel-postmark-api",
     "description": "A Postmark API Client for Laravel projects",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "InteractionDesignFoundation\\Postmark\\": "src/"
+            "Junges\\Postmark\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "InteractionDesignFoundation\\Postmark\\Tests\\": "tests/"
+            "Junges\\Postmark\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "php": "^8.1|^8.2",
+        "php": "^8.2",
         "psr/http-client": "^1.0.1",
         "php-http/multipart-stream-builder": "^1.2",
         "guzzlehttp/guzzle": "^7.0"
@@ -35,7 +35,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "InteractionDesignFoundation\\Postmark\\Providers\\PostmarkServiceProvider"
+                "Junges\\Postmark\\Providers\\PostmarkServiceProvider"
             ]
         }
     },

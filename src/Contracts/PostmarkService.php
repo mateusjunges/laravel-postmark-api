@@ -1,6 +1,6 @@
 <?php
 
-namespace InteractionDesignFoundation\Postmark\Contracts;
+namespace Junges\Postmark\Contracts;
 
 interface PostmarkService
 {
